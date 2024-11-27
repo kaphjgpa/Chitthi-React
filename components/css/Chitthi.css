@@ -1,0 +1,490 @@
+.chitthi_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 58rem;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 30px;
+  border-radius: 10px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6rem);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
+  border: 1px solid #e6e5ea;
+}
+
+.chitthi_body {
+  display: flex;
+  flex-direction: row;
+  backdrop-filter: blur(6rem);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 10px 16px 0px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgb(29, 29, 29);
+  padding: 10px;
+  width: 115rem;
+  height: 55rem;
+}
+
+.chitthi_left {
+  display: flex;
+  flex-direction: column;
+  /* background-color: teal; */
+  justify-content: space-between;
+  width: 3.7rem;
+  padding: 5px;
+}
+
+.chitthi_top {
+  display: flex;
+  justify-content: center;
+}
+
+.chitthi_logo {
+  justify-self: center;
+  height: 3rem;
+  width: 3rem;
+}
+
+.chitthi_center {
+  display: flex;
+  /* background-color: blue; */
+  flex-direction: column;
+}
+
+.chitthi_buttom {
+  display: flex;
+  justify-content: flex-end;
+  /* background-color: white; */
+  flex-direction: column;
+}
+
+.chitthi_buttom > .MuiSvgIcon-root {
+  padding: 15px;
+  color: #bfbfc1;
+}
+
+.chitthi_center > .MuiSvgIcon-root {
+  padding: 15px;
+  color: #bfbfc1;
+}
+
+/* CHITTHI LEFT SECTION */
+
+.chitthi_wrapper_left {
+  background-color: #f4f3f8;
+  display: flex;
+  flex: 0.25;
+  flex-direction: column;
+  padding: 10px;
+  min-width: 23rem;
+  border-right: 1px solid #e6e5ea;
+  border-radius: 10px 0 0 10px;
+}
+
+.add_conversation {
+  display: flex;
+  margin-bottom: 2px;
+  justify-content: space-evenly;
+}
+
+.add {
+  padding-right: 5px;
+}
+
+.add_conversation > button {
+  border: none;
+  background: black;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  border-radius: 10px;
+  height: 4rem;
+  width: 23rem;
+}
+
+.conversation_btn {
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat_heading {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text_chat > h1 {
+  font-size: 38px;
+  color: rgb(27, 27, 27);
+}
+
+.search_bar {
+  display: flex;
+  height: 3.5rem;
+  width: 22.5rem;
+  border-radius: 10px;
+  padding-right: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.search_bar > input {
+  background-color: #ffffff;
+  flex: 1;
+  border-radius: 5px;
+  height: 2.5rem;
+  width: 22.5rem;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border: none;
+  outline-width: 0;
+}
+
+.chats_holder {
+  overflow-y: scroll;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* CHITTHI CENTER SECTION */
+.chitthi_wrapper_center {
+  background-color: #f4f3f8;
+  display: flex;
+  flex: 0.7;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-right: 20px;
+  min-width: 23rem;
+  border-right: 1px solid #e6e5ea;
+}
+
+.chat_screen {
+  flex: 0.95;
+  padding-top: 10px;
+  padding-bottom: 1rem;
+  overflow-y: scroll;
+}
+
+.chat_screen > p {
+  font-size: 20px;
+}
+
+.chitthi_chat_footer {
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+  flex: 0.05;
+  border-radius: 10px;
+}
+
+.add_docs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  flex: 0.1;
+}
+
+.input_bar {
+  display: flex;
+  flex: 0.8;
+}
+
+.emoji_send {
+  display: flex;
+  flex: 0.1;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* Header */
+
+.chitthi_wrapper_center_top {
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  padding-bottom: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e5ea;
+}
+
+.chitthi_wrapper_center_top_left {
+  display: flex;
+  align-items: center;
+}
+
+.chitthi_wrapper_center_top_right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.lastSeen {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.members {
+  color: #000;
+  padding-right: 10px;
+}
+
+.add_and_avatar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-right: 10px;
+}
+
+.chat_message {
+  position: relative;
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  max-width: 30rem;
+  word-break: break-word;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  width: fit-content;
+}
+
+.chat_message > p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.chat_reciever {
+  margin-left: auto;
+  max-width: 30rem;
+  align-items: flex-start;
+  word-break: break-word;
+  background-color: #0a80fe;
+}
+
+.chat_reciever > p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.chat_timestamp {
+  margin-left: 10px;
+  font-size: 12px;
+}
+
+.trash {
+  cursor: pointer;
+}
+.input_bar > form > button {
+  display: none;
+}
+
+.input_bar > form > input {
+  background-color: #ffffff;
+  border-radius: 5px;
+  height: 2rem;
+  width: 44rem;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  outline-width: 0;
+}
+
+/* CHITTHI RIGHT SECTION */
+
+.chitthi_wrapper_right {
+  background-color: #f4f3f8;
+  display: flex;
+  flex: 0.3;
+  flex-direction: column;
+  color: black;
+  border-radius: 0 10px 10px 0;
+  overflow-y: scroll;
+}
+
+.user_profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px;
+  justify-content: center;
+  background-color: #ffffff;
+  color: black;
+}
+
+.user_profile > img {
+  height: 145px;
+  width: 145px;
+  border-radius: 50%;
+}
+
+.user_profile > h4 {
+  padding: 10px;
+}
+
+.user_images {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  margin-top: 5px;
+  overflow-y: scroll;
+}
+
+.images_header {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.sub_heading_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.sub_heading_container > h3 {
+  padding-right: 14rem;
+  padding-top: 0.7rem;
+}
+
+.image_container_holder {
+  display: flex;
+}
+
+.images_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.both_users_images {
+  display: flex;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.user_file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  margin-top: 5px;
+}
+
+.user_pinned_items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px;
+  margin-top: 5px;
+}
+
+.emoji_tray {
+  display: flex;
+  flex: 1;
+}
+
+.emoji-picker-react {
+  display: flex;
+  flex: 1;
+}
+
+.send_Image_Container {
+  display: flex;
+  flex-direction: column;
+  object-fit: contain;
+  width: 10rem;
+  backdrop-filter: blur(6rem);
+}
+
+.send_Image_Container > h3 {
+  padding-right: 15rem;
+  padding-top: 0.7rem;
+}
+
+.send_Image_Container > img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.cancel_btn {
+  cursor: pointer;
+}
+
+.send_Image {
+  display: flex;
+  width: 25rem;
+  object-fit: contain;
+  flex-direction: column;
+  justify-items: flex-end;
+  align-items: flex-start;
+}
+
+.send_Image > img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.user_file_heading {
+  display: flex;
+  flex-direction: row;
+}
+
+.user_file_heading > h3 {
+  padding-right: 15.5rem;
+  padding-top: 0.7rem;
+}
+
+.user_file_holder {
+  display: flex;
+}
+
+.files_holder {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.autoScroll {
+  margin-bottom: 10rem;
+}

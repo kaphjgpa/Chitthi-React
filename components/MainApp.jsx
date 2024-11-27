@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import "../components/css/MainApp.css";
 import Login from "./Login";
 // import Loading from "./Loading";
-import firebase from "../src/firebase";
+import * as firebase from "../src/firebase";
 import { auth, db } from "../src/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Chitthi from "./Components/Chitthi";
+import Chitthi from "./Chitthi";
 
 function MainApp() {
   const [user, loading] = useAuthState(auth);

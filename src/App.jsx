@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "../components/Navbar";
 import Home from "../components/Home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainApp from "../components/MainApp";
 
 function App() {
   const router = createBrowserRouter([
@@ -11,6 +12,14 @@ function App() {
         <>
           <Navbar />
           <Home />
+        </>
+      ),
+    },
+    {
+      path: "/mainapp",
+      element: (
+        <>
+          <MainApp />
         </>
       ),
     },
