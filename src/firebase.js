@@ -3,16 +3,6 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCCFPm_me39f48H0jZLrByu6QSgMTPIV0g",
-//   authDomain: "project-x-e3c38.firebaseapp.com",
-//   projectId: "project-x-e3c38",
-//   storageBucket: "project-x-e3c38.appspot.com",
-//   messagingSenderId: "908665978885",
-//   appId: "1:908665978885:web:6963083df0a10afcb21c6c",
-//   measurementId: "G-EQBQF885BY",
-// };
-
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
