@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.home {
+  height: auto;
+  background-color: #dad6d1;
+  backdrop-filter: blur(5rem);
+}
+.hero_section {
+  display: flex;
+  height: 110vh;
+  backdrop-filter: blur(5rem);
+  z-index: 3;
+}
+.hero_left {
+  flex: 1;
+  flex-direction: column;
+  padding-left: 15rem;
+  padding-top: 15rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero_text {
+  font-size: 60px;
+  font-weight: 400;
+  padding-bottom: 1.5rem;
+  text-align: start;
+  color: #000;
+}
+
+.hero_subheading {
+  height: 7rem;
+  width: 33rem;
+  font-weight: 300;
+  font-size: 24px;
+  text-align: start;
+  color: #000;
+}
+
+.hero_right {
+  flex: 1;
+  padding-top: 10rem;
+  padding-left: 5rem;
+  padding-right: 15rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero_right > img {
+  animation: move-up 2.5s infinite alternate;
+}
+
+.gradient1 {
+  position: absolute;
+  height: 35rem;
+  width: 40rem;
+  top: 13rem;
+  left: 13rem;
+  border-radius: 50%;
+  animation: anim 20s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 125, 31),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+
+.gradient2 {
+  position: absolute;
+  height: 25rem;
+  width: 30rem;
+  top: 15rem;
+  right: 10rem;
+  border-radius: 50%;
+  animation: anim 10s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(132, 0, 219),
+    rgb(240, 125, 31)
+  );
+  z-index: -1;
+}
+
+@keyframes move-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(3rem);
+  }
+}
+
+.heading {
+  height: 15vh;
+  padding-top: 3rem;
+  padding-left: 35rem;
+  font-size: 54px;
+  font-weight: 200;
+  align-items: center;
+}
+
+.heading > h2 {
+  height: 8rem;
+  width: 55rem;
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 -2vmin 7vmin purple inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
+    box-shadow: -1vmin -2vmin 3vmin LightPink inset,
+      -1vmin -2vmin 4vmin MediumPurple inset, 1vmin -1vmin 7vmin purple inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 2vmin 7vmin purple inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 4vmin LightPink inset,
+      2vmin -1vmin 4vmin MediumPurple inset, -1vmin -1vmin 5vmin purple inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
+  }
+}

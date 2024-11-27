@@ -1,0 +1,52 @@
+.navbar {
+  height: 6rem;
+  background-color: #dad6d1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #000;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.navbar_left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+}
+
+.navbar_left > p {
+  font-size: 20px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  padding-left: 1rem;
+}
+
+.logo {
+  height: 3rem;
+  width: 3rem;
+}
+
+.app_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 7px;
+  height: 3rem;
+  width: 11rem;
+}
+
+.logo_btn {
+  padding-right: 10px;
+  height: 30px;
+  width: 30px;
+}
