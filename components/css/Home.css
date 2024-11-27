@@ -5,7 +5,8 @@
 
 .home {
   height: auto;
-  background-color: #dad6d1;
+  /* background-color: #dad6d1; */
+  background-color: #242424;
   backdrop-filter: blur(5rem);
 }
 .hero_section {
@@ -28,7 +29,7 @@
   font-weight: 400;
   padding-bottom: 1.5rem;
   text-align: start;
-  color: #000;
+  color: #dad6d1;
 }
 
 .hero_subheading {

@@ -1,10 +1,12 @@
 .navbar {
   height: 6rem;
-  background-color: #dad6d1;
+  /* background-color: #dad6d1; */
+  background-color: #242424;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #000;
+  color: #dad6d1;
   padding-left: 30px;
   padding-right: 30px;
 }
