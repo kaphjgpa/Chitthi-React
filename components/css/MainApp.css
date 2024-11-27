@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.asdf {
+  background-color: #dad6d1;
+  backdrop-filter: blur(6rem);
+  height: 130vh;
+  z-index: -6;
+}
+
+.mainApp {
+  height: 130vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  z-index: 3;
+  /* display: none; */
+}
+
+.gradient_App {
+  position: absolute;
+  height: 32rem;
+  width: 32rem;
+  top: 5rem;
+  left: 10rem;
+  border-radius: 50%;
+  animation: anim 8s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App2 {
+  position: absolute;
+  height: 32rem;
+  width: 32rem;
+  top: 8rem;
+  right: 0;
+  border-radius: 50%;
+  animation: anim 30s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App3 {
+  position: absolute;
+  height: 8rem;
+  width: 8rem;
+  top: 12rem;
+  right: 60rem;
+  border-radius: 50%;
+  animation: anim 10s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+.gradient_App4 {
+  position: absolute;
+  height: 7rem;
+  width: 7rem;
+  top: 8rem;
+  right: 111rem;
+  border-radius: 50%;
+  animation: anim 6s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+.gradient_App5 {
+  position: absolute;
+  height: 22rem;
+  width: 22rem;
+  top: 3rem;
+  right: 33rem;
+  border-radius: 50%;
+  animation: anim 20s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+.gradient_App6 {
+  position: absolute;
+  height: 12rem;
+  width: 12rem;
+  top: 1rem;
+  right: 70rem;
+  border-radius: 50%;
+  animation: anim 25s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App7 {
+  position: absolute;
+  height: 12rem;
+  width: 12rem;
+  top: 1.5rem;
+  right: 2rem;
+  border-radius: 50%;
+  animation: anim 12s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App8 {
+  position: absolute;
+  height: 9rem;
+  width: 9rem;
+  top: 1rem;
+  right: 22rem;
+  border-radius: 50%;
+  animation: anim 16s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App9 {
+  position: absolute;
+  height: 9rem;
+  width: 9rem;
+  top: 1rem;
+  right: 103rem;
+  border-radius: 50%;
+  animation: anim 30s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+.gradient_App10 {
+  position: absolute;
+  height: 8rem;
+  width: 8rem;
+  top: 2rem;
+  right: 60rem;
+  border-radius: 50%;
+  animation: anim 15s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+  z-index: -5;
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 -2vmin 7vmin purple inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
+    box-shadow: -1vmin -2vmin 3vmin LightPink inset,
+      -1vmin -2vmin 4vmin MediumPurple inset, 1vmin -1vmin 7vmin purple inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 2vmin 7vmin purple inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 4vmin LightPink inset,
+      2vmin -1vmin 4vmin MediumPurple inset, -1vmin -1vmin 5vmin purple inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
+  }
+}
