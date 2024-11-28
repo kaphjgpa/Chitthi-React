@@ -24,8 +24,26 @@ import SidebarChat from "./SidebarChat";
 import Emoji from "./Emoji";
 
 // After Update Firebase v9+
-import { collection, query, where } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  addDoc,
+  query,
+  where,
+  onSnapshot,
+  orderBy,
+} from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+} from "firebase/storage";
+import { getAuth } from "firebase/auth";
+import { firebaseConfig } from "./firebaseConfig";
 
 function Chitthi() {
   const [user] = useAuthState(auth);
@@ -101,17 +119,16 @@ function Chitthi() {
 
   useEffect(() => {
     if (chatId) {
-      db.collection("chats")
-        .doc(chatId)
-        .onSnapshot((snapshot) => setPersonName(snapshot.data().name));
+      const chatRef = doc(db, "chats", chatId);
+      onSnapshot(chatRef, (snapshot) => {
+        setPersonName(snapshot.data().name);
+      });
 
-      db.collection("chats")
-        .doc(chatId)
-        .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setPersonMessages(snapshot.docs.map((doc) => doc.data()))
-        );
+      const messagesRef = collection(chatRef, "messages");
+      const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
+      onSnapshot(messagesQuery, (snapshot) => {
+        setPersonMessages(snapshot.docs.map((doc) => doc.data()));
+      });
     }
   }, [chatId]);
 
@@ -119,16 +136,15 @@ function Chitthi() {
     const input = prompt(
       "Please enter an email address for the user you wish to chat with"
     );
-    if (!input) return null; //This is for do nothing if input is Empty
+    if (!input) return null;
 
-    //Checks weather the user is already exist in the Database
     if (
       EmailValidator.validate(input) &&
       !chatAlreadyExists(input) &&
       input !== user.email
     ) {
-      // we need to add the chats in Database 'chats' collection
-      db.collection("chats").add({
+      const chatsRef = collection(db, "chats");
+      addDoc(chatsRef, {
         users: [user.email, input],
       });
     }
@@ -246,54 +262,36 @@ function Chitthi() {
   }, [roomId]);
 
   const sendMessage = (e) => {
-    e.preventDefault(); // Stop this from refresh the page
-    // console.log("You type this >>>> ", input);
+    e.preventDefault();
 
-    db.collection("rooms")
-      .doc(roomId)
-      .collection("messages")
-      .add({
-        message: input,
-        name: user.displayName,
-        email: user.email,
-        photoURL: user.photoURL,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then((doc) => {
-        if (imageToGroups) {
-          const uploadTask = storage
-            .ref(`groupsImages/${doc.id}`)
-            .putString(imageToGroups, "data_url");
+    const messageRef = collection(db, "rooms", roomId, "messages");
+    addDoc(messageRef, {
+      message: input,
+      name: user.displayName,
+      email: user.email,
+      photoURL: user.photoURL,
+      timestamp: new Date(),
+    }).then((docRef) => {
+      if (imageToGroups) {
+        const imageRef = ref(storage, `groupsImages/${docRef.id}`);
+        uploadString(imageRef, imageToGroups, "data_url")
+          .then(() => {
+            getDownloadURL(imageRef).then((url) => {
+              const messageDoc = doc(
+                db,
+                "rooms",
+                roomId,
+                "messages",
+                docRef.id
+              );
+              setDoc(messageDoc, { groupImage: url }, { merge: true });
+            });
+          })
+          .catch((error) => console.error(error));
+      }
+    });
 
-          removeGroupImage();
-
-          uploadTask.on(
-            "state_change",
-            null,
-            (error) => console.error(error),
-            () => {
-              storage
-                .ref("groupsImages")
-                .child(doc.id)
-                .getDownloadURL()
-                .then((url) => {
-                  db.collection("rooms")
-                    .doc(roomId)
-                    .collection("messages")
-                    .doc(doc.id)
-                    .set(
-                      {
-                        groupImage: url,
-                      },
-                      { merge: true }
-                    );
-                });
-            }
-          );
-        }
-      });
     setInput("");
-    autoScroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
