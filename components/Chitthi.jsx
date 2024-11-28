@@ -43,7 +43,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { getAuth } from "firebase/auth";
-import { firebaseConfig } from "./firebaseConfig";
+// import { firebaseConfig } from "./firebaseConfig";
 
 function Chitthi() {
   const [user] = useAuthState(auth);
@@ -109,26 +109,26 @@ function Chitthi() {
   const autoScroll = useRef();
 
   // This code is for 1-1 Chat
-  useEffect(() =>
-    db
-      .collection("chats")
-      .doc(chatId)
-      .collection("messages")
-      .orderBy("timestamp", "asc")
-  );
-
   useEffect(() => {
     if (chatId) {
+      // Setting up the chat reference to get chat details
       const chatRef = doc(db, "chats", chatId);
-      onSnapshot(chatRef, (snapshot) => {
-        setPersonName(snapshot.data().name);
+      const unsubscribeChat = onSnapshot(chatRef, (snapshot) => {
+        setPersonName(snapshot.data()?.name);
       });
 
+      // Setting up the messages reference to get ordered messages
       const messagesRef = collection(chatRef, "messages");
       const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
-      onSnapshot(messagesQuery, (snapshot) => {
+      const unsubscribeMessages = onSnapshot(messagesQuery, (snapshot) => {
         setPersonMessages(snapshot.docs.map((doc) => doc.data()));
       });
+
+      // Cleanup listeners when chatId changes or component unmounts
+      return () => {
+        unsubscribeChat();
+        unsubscribeMessages();
+      };
     }
   }, [chatId]);
 
@@ -219,45 +219,54 @@ function Chitthi() {
     autoScroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
-  //roome functionality
+  //room functionality
   //THIS FUNCTION MOUNT THE ALL ROOMS THAT ARE IN OUR DATABASE
   useEffect(() => {
-    const unsubscribe = db
-      .collection("rooms")
-      .onSnapshot((snapshot) =>
-        setRooms(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
-      );
+    const roomsRef = collection(db, "rooms");
+    const unsubscribe = onSnapshot(roomsRef, (snapshot) => {
+      setRooms(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
+    });
 
+    // Cleanup on unmount
     return () => {
       unsubscribe();
     };
   }, []);
 
-  const createRoom = () => {
+  const createRoom = async () => {
     const roomName = prompt("Please enter name for Group");
 
-    if (!roomName) return null;
+    if (!roomName) return;
 
-    if (roomName) {
-      db.collection("rooms").add({
+    try {
+      await addDoc(collection(db, "rooms"), {
         name: roomName,
       });
+    } catch (error) {
+      console.error("Error adding room: ", error);
     }
   };
 
   useEffect(() => {
     if (roomId) {
-      db.collection("rooms")
-        .doc(roomId)
-        .onSnapshot((snapshot) => setRoomName(snapshot.data().name));
+      // Listening to room name
+      const roomRef = doc(db, "rooms", roomId);
+      const unsubscribeRoom = onSnapshot(roomRef, (snapshot) => {
+        setRoomName(snapshot.data()?.name);
+      });
 
-      db.collection("rooms")
-        .doc(roomId)
-        .collection("messages")
-        .orderBy("timestamp", "asc")
-        .onSnapshot((snapshot) =>
-          setMessages(snapshot.docs.map((doc) => doc.data()))
-        );
+      // Listening to messages collection ordered by timestamp
+      const messagesRef = collection(db, "rooms", roomId, "messages");
+      const messagesQuery = query(messagesRef, orderBy("timestamp", "asc"));
+      const unsubscribeMessages = onSnapshot(messagesQuery, (snapshot) => {
+        setMessages(snapshot.docs.map((doc) => doc.data()));
+      });
+
+      // Clean up listeners on unmount or when roomId changes
+      return () => {
+        unsubscribeRoom();
+        unsubscribeMessages();
+      };
     }
   }, [roomId]);
 
