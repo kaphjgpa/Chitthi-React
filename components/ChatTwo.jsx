@@ -1,19 +1,34 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { Avatar } from "@material-ui/core";
 import "../components/css/ChatTwo.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../src/firebase";
-import { useCollection } from "react-firebase-hooks/firestore";
+import { collection, query, where, getDocs } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import getRecipientEmail from "../components/utils/getRecipientEmail";
 
 function ChatTwo({ id, users }) {
   const [user] = useAuthState(auth);
-  const [recipientSnapshot] = useCollection(
-    db.collection("users").where("email", "==", getRecipientEmail(users, user))
-  );
-  const recipient = recipientSnapshot?.docs?.[0]?.data();
+  const [recipient, setRecipient] = useState(null);
   const recipientEmail = getRecipientEmail(users, user);
+
+  useEffect(() => {
+    const fetchRecipient = async () => {
+      if (recipientEmail) {
+        const q = query(
+          collection(db, "users"),
+          where("email", "==", recipientEmail)
+        );
+        const snapshot = await getDocs(q);
+        if (!snapshot.empty) {
+          setRecipient(snapshot.docs[0].data());
+        }
+      }
+    };
+
+    fetchRecipient();
+  }, [recipientEmail]);
 
   return (
     <Link to={`/mainapp/chat/${id}`}>
