@@ -22,7 +22,6 @@ function Login() {
       <Helmet>
         <title>Login - Chitthi</title>
       </Helmet>
-
       <h1 className="login_heading">Login</h1>
       <div className="login_wrapper">
         <div className="image_container">

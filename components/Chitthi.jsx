@@ -4,7 +4,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../src/firebase";
 import * as EmailValidator from "email-validator";
-import { useCollection } from "react-firebase-hooks/firestore";
 import "../components/css/Chitthi.css";
 import { Avatar, IconButton } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
@@ -23,6 +22,10 @@ import TelegramIcon from "@material-ui/icons/Telegram";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
 import Emoji from "./Emoji";
+
+// After Update Firebase v9+
+import { collection, query, where } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 function Chitthi() {
   const [user] = useAuthState(auth);
@@ -54,30 +57,6 @@ function Chitthi() {
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
-  // Incomplete Logic behind File with 1-1 chat
-
-  // const addFileToMessage = (e) => {
-  //   const fileReader = new FileReader();
-  //   if (e.target.files[0]) {
-  //     fileReader.readAsDataURL(e.target.files[0]);
-  //   }
-  //   fileReader.onload = (readerEvent) => {
-  //     setFileToMessage(readerEvent.target.result);
-  //   };
-  // };
-
-  // Logic behind Files in Groups
-
-  // const addFileToGroup = (e) => {
-  //   const groupFileReader = new FileReader();
-  //   if (e.target.files[0]) {
-  //     groupFileReader.readAsDataURL(e.target.files[0]);
-  //   }
-  //   groupFileReader.onload = (readerEvent) => {
-  //     setFileToMessage(readerEvent.target.result);
-  //   };
-  // };
-
   // Logic behind Image with text in 1-1
   const addImageToMessage = (e) => {
     const reader = new FileReader();
@@ -155,10 +134,10 @@ function Chitthi() {
     }
   };
 
-  const userChatRef = db
-    .collection("chats")
-    .where("users", "array-contains", user.email || null);
-
+  const userChatRef = query(
+    collection(db, "chats"),
+    where("users", "array-contains", user.email || null)
+  );
   const [chatsSnapshot] = useCollection(userChatRef);
 
   const chatAlreadyExists = (recipientEmail) =>
