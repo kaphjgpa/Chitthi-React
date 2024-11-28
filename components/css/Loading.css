@@ -1,0 +1,126 @@
+.loading {
+  display: flex;
+  background-color: #dad6d1;
+  height: 90vh;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.loading_container {
+  display: flex;
+  margin-left: 30rem;
+  margin-right: 30rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_logo {
+  margin-top: 10rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading_logo > img {
+  height: 20rem;
+  width: 20rem;
+  object-fit: contain;
+}
+
+.loading_icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.gradient_loading {
+  display: flex;
+  position: absolute;
+  height: 12rem;
+  width: 12rem;
+  margin-top: 5rem;
+  animation: anim 10s linear infinite;
+  background: linear-gradient(
+    to right bottom,
+    rgb(255, 72, 0),
+    rgba(112, 0, 187)
+  );
+}
+
+.icon_loading {
+  margin-top: 5rem;
+}
+
+.icon_loading > img {
+  height: 10rem;
+  width: 20rem;
+  object-fit: contain;
+}
+
+/* .icon_loading::before {
+  animation: anim 3s infinite;
+  background-image: linear-gradient(135deg, slateblue, HotPink);
+  border-radius: 30% 70% 53% 47% / 26% 46% 54% 74%;
+  box-shadow: 0 -2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+    0 -2vmin 7vmin purple inset;
+  content: "";
+  display: inline-block;
+  filter: drop-shadow(0 0 3vmin Thistle) drop-shadow(0 5vmin 4vmin Orchid)
+    drop-shadow(2vmin -2vmin 15vmin MediumSlateBlue)
+    drop-shadow(0 0 7vmin MediumOrchid);
+  height: 50vmin;
+  position: relative;
+  top: 0;
+  width: 50vmin;
+} */
+
+@keyframes anim {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 -2vmin 7vmin purple inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
+    box-shadow: -1vmin -2vmin 3vmin LightPink inset,
+      -1vmin -2vmin 4vmin MediumPurple inset, 1vmin -1vmin 7vmin purple inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 2vmin 7vmin purple inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 4vmin LightPink inset,
+      2vmin -1vmin 4vmin MediumPurple inset, -1vmin -1vmin 5vmin purple inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
+  }
+}

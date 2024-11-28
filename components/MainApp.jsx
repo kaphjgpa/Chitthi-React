@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "../components/css/MainApp.css";
 import Login from "./Login";
-// import Loading from "./Loading";
+import Loading from "./Loading";
 import * as firebase from "../src/firebase";
 import { auth, db } from "../src/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
