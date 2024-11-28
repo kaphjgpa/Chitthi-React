@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@mui/material/Avatar";
 import "../components/css/ChatTwo.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { db, auth } from "../src/firebase";

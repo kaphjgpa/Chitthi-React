@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Avatar } from "@material-ui/core";
+import Avatar from "@mui/material/Avatar";
 import "../components/css/SidebarChat.css";
 import { db } from "../src/firebase";
 import { Link } from "react-router-dom";

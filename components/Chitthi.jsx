@@ -5,20 +5,21 @@ import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../src/firebase";
 import * as EmailValidator from "email-validator";
 import "../components/css/Chitthi.css";
-import { Avatar, IconButton } from "@material-ui/core";
-import { SearchOutlined } from "@material-ui/icons";
-import SettingsIcon from "@material-ui/icons/Settings";
-import GroupAddIcon from "@material-ui/icons/GroupAdd";
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-import GroupIcon from "@material-ui/icons/Group";
+// import { Avatar, IconButton } from "@material-ui/core";
+import { IconButton, Avatar } from "@mui/material";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import SettingsIcon from "@mui/icons-material/Settings";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import GroupIcon from "@mui/icons-material/Group";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AddIcon from "@mui/icons-material/Add";
+import ImageIcon from "@mui/icons-material/Image";
+import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import TelegramIcon from "@mui/icons-material/Telegram";
 import BlackLogo from "/BlackLogo.png";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
-import CancelIcon from "@material-ui/icons/Cancel";
-import AddIcon from "@material-ui/icons/Add";
-import ImageIcon from "@material-ui/icons/Image";
-import EmojiEmotionsIcon from "@material-ui/icons/EmojiEmotions";
-import TelegramIcon from "@material-ui/icons/Telegram";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
 import Emoji from "./Emoji";
@@ -357,7 +358,7 @@ function Chitthi() {
           <div className="search_bar">
             <input type="text" placeholder="Search here" />
             <IconButton>
-              <SearchOutlined />
+              <SearchOutlinedIcon />
             </IconButton>
           </div>
           <div className="chats_holder">
