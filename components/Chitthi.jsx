@@ -7,7 +7,7 @@ import * as EmailValidator from "email-validator";
 import "../components/css/Chitthi.css";
 // import { Avatar, IconButton } from "@material-ui/core";
 import { IconButton, Avatar } from "@mui/material";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import FindInPageOutlinedIcon from "@mui/icons-material/FindInPageOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
@@ -358,7 +358,7 @@ function Chitthi() {
           <div className="search_bar">
             <input type="text" placeholder="Search here" />
             <IconButton>
-              <SearchOutlinedIcon />
+              <FindInPageOutlinedIcon />
             </IconButton>
           </div>
           <div className="chats_holder">
