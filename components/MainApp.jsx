@@ -33,9 +33,7 @@ function MainApp() {
         <Login />
       ) : (
         <div className="mainApp">
-          <div className="gradient_layer">
-            <Chitthi />
-          </div>
+          <Chitthi />
         </div>
       )}
     </div>

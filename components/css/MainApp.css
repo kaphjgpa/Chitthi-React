@@ -4,7 +4,7 @@
 }
 
 .asdf {
-  background-color: #dad6d1;
+  background-color: #242424;
   backdrop-filter: blur(6rem);
   height: 100vh;
   width: 100vw;
@@ -12,7 +12,11 @@
 }
 
 .mainApp {
-  height: 130vh;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;

@@ -1,4 +1,4 @@
-.chitthi_wrapper {
+/* .chitthi_wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,19 +12,19 @@
   backdrop-filter: blur(6rem);
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.5);
   border: 1px solid #e6e5ea;
-}
+} */
 
 .chitthi_body {
   display: flex;
   flex-direction: row;
   backdrop-filter: blur(6rem);
-  background: #ffffff;
+  background-color: #242424;
   border-radius: 10px;
   box-shadow: 0px 10px 16px 0px rgba(0, 0, 0, 0.5);
   border: 1px solid rgb(29, 29, 29);
   padding: 10px;
-  width: 115rem;
-  height: 55rem;
+  width: 85vw;
+  height: 80vh;
 }
 
 .chitthi_left {
@@ -49,6 +49,8 @@
 
 .chitthi_center {
   display: flex;
+  justify-content: center;
+  align-items: center;
   /* background-color: blue; */
   flex-direction: column;
 }
@@ -73,13 +75,13 @@
 /* CHITTHI LEFT SECTION */
 
 .chitthi_wrapper_left {
-  background-color: #f4f3f8;
+  background-color: #242424;
   display: flex;
-  flex: 0.25;
+  flex: 0.2;
   flex-direction: column;
   padding: 10px;
   min-width: 23rem;
-  border-right: 1px solid #e6e5ea;
+
   border-radius: 10px 0 0 10px;
 }
 
@@ -102,14 +104,20 @@
   font-weight: 500;
   border-radius: 10px;
   height: 4rem;
-  width: 23rem;
+  width: 18rem;
 }
 
 .conversation_btn {
   font-size: 25px;
+  font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.conversation_btn > h5 {
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .chat_heading {
@@ -120,8 +128,10 @@
 }
 
 .text_chat > h1 {
-  font-size: 38px;
-  color: rgb(27, 27, 27);
+  color: #bfbfc1;
+  font-size: 25px;
+  font-weight: 300;
+  margin-bottom: 10px;
 }
 
 .search_bar {
@@ -137,6 +147,7 @@
 
 .search_bar > input {
   background-color: #ffffff;
+  color: black;
   flex: 1;
   border-radius: 5px;
   height: 2.5rem;
@@ -162,14 +173,13 @@
 
 /* CHITTHI CENTER SECTION */
 .chitthi_wrapper_center {
-  background-color: #f4f3f8;
+  background-color: #242424;
   display: flex;
   flex: 0.7;
   flex-direction: column;
   padding-left: 20px;
   padding-right: 20px;
   min-width: 23rem;
-  border-right: 1px solid #e6e5ea;
 }
 
 .chat_screen {
@@ -186,7 +196,7 @@
 .chitthi_chat_footer {
   display: flex;
   flex-direction: row;
-  background-color: #ffffff;
+  background-color: #303030;
   margin-bottom: 10px;
   flex: 0.05;
   border-radius: 10px;
@@ -206,8 +216,6 @@
 }
 
 .emoji_send {
-  display: flex;
-  flex: 0.1;
   align-items: center;
   justify-content: center;
   padding: 5px;
@@ -296,10 +304,10 @@
 }
 
 .input_bar > form > input {
-  background-color: #ffffff;
+  background-color: #242424;
   border-radius: 5px;
   height: 2rem;
-  width: 44rem;
+  width: 21rem;
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -307,13 +315,13 @@
   border: none;
   outline-width: 0;
 }
+s
 
 /* CHITTHI RIGHT SECTION */
 
 .chitthi_wrapper_right {
-  background-color: #f4f3f8;
+  background-color: #242424;
   display: flex;
-  flex: 0.3;
   flex-direction: column;
   color: black;
   border-radius: 0 10px 10px 0;
@@ -328,7 +336,7 @@
   padding: 30px;
   margin: 20px;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: #242424;
   color: black;
 }
 

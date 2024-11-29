@@ -315,23 +315,21 @@ function Chitthi() {
             <img className="chitthi_logo" src={BlackLogo} alt="logo" />
           </div>
           <div className="chitthi_center">
-            <IconButton>
+            <div>
               <ChatBubbleIcon
                 onClick={() => setActive("Chats")}
-                fontSize="large"
+                fontSize="small"
               />
-            </IconButton>
-            <IconButton>
-              <GroupIcon onClick={() => setActive("Groups")} fontSize="large" />
-            </IconButton>
+              <h5>Chats</h5>
+            </div>
+            <br />
+            <div>
+              <GroupIcon onClick={() => setActive("Groups")} fontSize="small" />
+              <h5>Rooms</h5>
+            </div>
           </div>
           <div className="chitthi_buttom">
-            <IconButton>
-              <GroupAddIcon onClick={createRoom} fontSize="large" />
-            </IconButton>
-            <IconButton>
-              <SettingsIcon fontSize="large" />
-            </IconButton>
+            <GroupAddIcon onClick={createRoom} fontSize="small" />
             <IconButton>
               <Avatar
                 className="avatar"
@@ -344,7 +342,8 @@ function Chitthi() {
         <div className="chitthi_wrapper_left">
           <div className="add_conversation">
             <button onClick={createChat} className="conversation_btn">
-              <AddIcon className="add" fontSize="large" /> New Conversation
+              <AddIcon className="add" fontSize="small" />{" "}
+              <h5>New Conversation</h5>
             </button>
           </div>
           <div className="chat_heading">
@@ -353,9 +352,7 @@ function Chitthi() {
               {active === "Groups" && <h1>Groups</h1>}
             </div>
             <div className="dots">
-              <IconButton>
-                <MoreHorizIcon fontSize="large" />
-              </IconButton>
+              <MoreHorizIcon fontSize="small" />
             </div>
           </div>
           <div className="search_bar">
@@ -512,9 +509,6 @@ function Chitthi() {
                 </div>
               </div>
               <div className="chitthi_wrapper_center_top_right">
-                <div className="members">
-                  <h3>Members :</h3>
-                </div>
                 <div className="add_and_avatar">
                   <IconButton>
                     <AddIcon />

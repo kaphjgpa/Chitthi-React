@@ -1,11 +1,9 @@
 .sidebarChat {
   display: flex;
   margin-top: 10px;
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
-  border-radius: 5px;
-  border-bottom: 1px solid #f6f6f6;
-  /* word-break: break-word; */
+  border-radius: 10px;
 }
 
 .addNewChat {
@@ -20,20 +18,19 @@ a {
 }
 
 .sidebarChat:hover {
-  background-color: #ffffff;
+  background-color: #303030;
 }
 
 .sidebarChat_info {
-  color: black;
+  color: #f6f6f6;
   margin-left: 15px;
 }
 .sidebarChat_info > h2 {
   font-size: 16px;
-  margin-bottom: 8px;
-  font-weight: 500;
+  font-weight: 300;
 }
 
 .sidebarChat_info > p {
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 200;
 }
