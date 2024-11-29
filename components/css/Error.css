@@ -1,0 +1,226 @@
+.error_container {
+  background-color: #242424;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(6rem);
+  z-index: -6;
+}
+
+.error_subcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  backdrop-filter: blur(6rem);
+  z-index: 3;
+}
+
+.error_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error_logo > img {
+  height: 70%;
+  animation: move-up 2s infinite alternate;
+}
+
+.error_information {
+  justify-content: center;
+}
+
+.error_information > h1 {
+  font-size: 46px;
+  font-weight: 300;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error_information > h3 {
+  font-size: 36px;
+  font-weight: 200;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.error_information > h5 {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: 100;
+  text-align: center;
+}
+
+.error_buttons {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.app_btn {
+  margin: 20px;
+}
+
+.error_btn {
+  height: 3.5rem;
+  width: 12rem;
+}
+
+.gradient41 {
+  position: absolute;
+  height: 40rem;
+  width: 40rem;
+  top: 18rem;
+  left: 27rem;
+  border-radius: 50%;
+  animation: anim 10s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 118, 18),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+
+.gradient42 {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  top: 10rem;
+  left: 7rem;
+  border-radius: 50%;
+  animation: anim 5s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 118, 18),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+
+.gradient43 {
+  position: absolute;
+  height: 25rem;
+  width: 25rem;
+  top: 31rem;
+  left: 2rem;
+  border-radius: 50%;
+  animation: anim 5s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 118, 18),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+
+.gradient44 {
+  position: absolute;
+  height: 20rem;
+  width: 20rem;
+  top: 31rem;
+  right: 5rem;
+  border-radius: 50%;
+  animation: anim 30s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 118, 18),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+
+.gradient45 {
+  position: absolute;
+  height: 33rem;
+  width: 33rem;
+  top: 9rem;
+  right: 20rem;
+  border-radius: 50%;
+  animation: anim 25s infinite alternate;
+  background: linear-gradient(
+    to right bottom,
+    rgb(240, 118, 18),
+    rgb(132, 0, 219)
+  );
+  z-index: -5;
+}
+/* .gradient41 {
+  animation: hue_shift 5s infinite alternate;
+} */
+
+@keyframes hue_shift {
+  from {
+    filter: hue-rotate(0);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes move-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(3rem);
+  }
+}
+
+@keyframes anim {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 52% 48% 70%;
+    box-shadow: 0 -2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 -2vmin 7vmin purple inset;
+  }
+
+  10% {
+    border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+  }
+
+  20% {
+    border-radius: 67% 33% 47% 53% / 37% 20% 80% 63%;
+  }
+
+  30% {
+    border-radius: 39% 61% 47% 53% / 37% 40% 60% 63%;
+    box-shadow: -1vmin -2vmin 3vmin LightPink inset,
+      -1vmin -2vmin 4vmin MediumPurple inset, 1vmin -1vmin 7vmin purple inset;
+  }
+
+  40% {
+    border-radius: 39% 61% 82% 18% / 74% 40% 60% 26%;
+  }
+
+  50% {
+    border-radius: 100%;
+    box-shadow: 0 2vmin 3vmin LightPink inset, 0 1vmin 4vmin MediumPurple inset,
+      0 2vmin 7vmin purple inset;
+  }
+
+  60% {
+    border-radius: 50% 50% 53% 47% / 72% 69% 31% 28%;
+  }
+
+  70% {
+    border-radius: 50% 50% 53% 47% / 26% 22% 78% 74%;
+    box-shadow: 1vmin 1vmin 4vmin LightPink inset,
+      2vmin -1vmin 4vmin MediumPurple inset, -1vmin -1vmin 5vmin purple inset;
+  }
+
+  80% {
+    border-radius: 50% 50% 53% 47% / 26% 69% 31% 74%;
+  }
+
+  90% {
+    border-radius: 20% 80% 20% 80% / 20% 80% 20% 80%;
+  }
+}

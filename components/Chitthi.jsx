@@ -35,6 +35,7 @@ import {
   where,
   onSnapshot,
   orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 import {
@@ -164,60 +165,62 @@ function Chitthi() {
           ?.length > 0
     );
 
-  const SendMessage = (e) => {
-    e.preventDefault(); // Stop this from refresh the page
-    db.collection("users").doc(user.uid).set(
-      {
-        lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
-      },
-      { merge: true }
-    );
-    db.collection("chats")
-      .doc(chatId)
-      .collection("messages")
-      .add({
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        message: chatInput,
-        name: user.displayName,
-        user: user.email,
-        photoURL: user.photoURL,
-      })
-      // Upload Images to firestore
-      .then((doc) => {
-        if (imageToMessage) {
-          const uploadTask = storage
-            .ref(`images/${doc.id}`)
-            .putString(imageToMessage, "data_url");
+  const SendMessage = async (e) => {
+    e.preventDefault(); // Stop this from refreshing the page
 
-          removeImage();
+    try {
+      // Update user's last seen
+      await setDoc(
+        doc(db, "users", user.uid),
+        { lastSeen: serverTimestamp() },
+        { merge: true }
+      );
 
-          uploadTask.on(
-            "state_change",
-            null,
-            (error) => console.error(error),
-            () => {
-              storage
-                .ref("images")
-                .child(doc.id)
-                .getDownloadURL()
-                .then((url) => {
-                  db.collection("chats")
-                    .doc(chatId)
-                    .collection("messages")
-                    .doc(doc.id)
-                    .set(
-                      {
-                        sendImage: url,
-                      },
-                      { merge: true }
-                    );
-                });
-            }
-          );
+      // Add message to the "messages" subcollection
+      const messageRef = await addDoc(
+        collection(db, "chats", chatId, "messages"),
+        {
+          timestamp: serverTimestamp(),
+          message: chatInput,
+          name: user.displayName,
+          user: user.email,
+          photoURL: user.photoURL,
         }
-      });
-    setChatInput("");
-    autoScroll.current.scrollIntoView({ behavior: "smooth" });
+      );
+
+      // Handle image upload if there's an image
+      if (imageToMessage) {
+        const uploadTaskRef = ref(storage, `images/${messageRef.id}`);
+        const uploadTask = uploadString(
+          uploadTaskRef,
+          imageToMessage,
+          "data_url"
+        );
+
+        removeImage();
+
+        uploadTask
+          .then(async () => {
+            const url = await getDownloadURL(uploadTaskRef);
+
+            // Update the message with the image URL
+            await updateDoc(
+              doc(db, "chats", chatId, "messages", messageRef.id),
+              {
+                sendImage: url,
+              }
+            );
+          })
+          .catch((error) => {
+            console.error("Error uploading image:", error);
+          });
+      }
+
+      setChatInput("");
+      autoScroll.current.scrollIntoView({ behavior: "smooth" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   //room functionality
@@ -445,18 +448,6 @@ function Chitthi() {
                 {/* Audio support is coming soon */}
               </div>
             )}
-            {/* {fileToGroup && (
-              <div className="send_Image_Container">
-                <CancelIcon
-                  className="cancel_btn"
-                  fontSize="small"
-                  color="error"
-                  onClick={removeFileToGroup}
-                />
-                <img src={fileToGroup} alt="Selected Image" />
-                Audio support is coming soon
-              </div>
-            )} */}
             <div className="chitthi_chat_footer">
               <div className="add_docs">
                 <IconButton>
@@ -471,18 +462,6 @@ function Chitthi() {
                   type="file"
                   hidden
                 />
-                {/* <IconButton>
-                  <AttachFileIcon
-                    onClick={() => filePickerRefG.current.click()}
-                    fontSize="default"
-                  />
-                </IconButton>
-                <input
-                  ref={filePickerRefG}
-                  onChange={addFileToGroup}
-                  type="file"
-                  hidden
-                /> */}
               </div>
               <div className="input_bar">
                 <form className="Form">
@@ -583,18 +562,6 @@ function Chitthi() {
                 <img src={imageToMessage} alt="Selected Image" />
               </div>
             )}
-            {/* {fileToMessage && (
-              <div className="send_Image_Container">
-                <CancelIcon
-                  className="cancel_btn"
-                  fontSize="small"
-                  color="error"
-                  onClick={removeFileToMessage}
-                />
-                <img src={fileToMessage} alt="Selected Image" />
-                Audio support is coming soon
-              </div>
-            )} */}
             <div className="chitthi_chat_footer">
               <div className="add_docs">
                 <IconButton>
