@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../src/firebase";
 import * as EmailValidator from "email-validator";
 import "../components/css/Chitthi.css";
-// import { Avatar, IconButton } from "@material-ui/core";
-import { IconButton, Avatar } from "@mui/material";
-// import FindInPageOutlinedIcon from "@mui/icons-material/FindInPageOutlined";
+import { Avatar, IconButton } from "@material-ui/core";
+// import Avatar from "@mui/material/Avatar";
+import FindInPageOutlinedIcon from "@mui/icons-material/FindInPageOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
@@ -357,7 +357,9 @@ function Chitthi() {
           </div>
           <div className="search_bar">
             <input type="text" placeholder="Search here" />
-            <IconButton>{/* <FindInPageOutlinedIcon /> */}</IconButton>
+            <IconButton>
+              <FindInPageOutlinedIcon />
+            </IconButton>
           </div>
           <div className="chats_holder">
             {active === "Chats" &&

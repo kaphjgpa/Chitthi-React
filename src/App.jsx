@@ -23,6 +23,22 @@ function App() {
         </>
       ),
     },
+    {
+      path: "/mainapp/chat/:chatId",
+      element: (
+        <>
+          <MainApp />
+        </>
+      ),
+    },
+    {
+      path: "/mainapp/rooms/:roomId",
+      element: (
+        <>
+          <MainApp />
+        </>
+      ),
+    },
   ]);
 
   return (
