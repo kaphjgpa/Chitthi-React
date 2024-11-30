@@ -322,21 +322,28 @@ function Chitthi() {
             <img className="chitthi_logo" src={BlackLogo} alt="logo" />
           </div>
           <div className="chitthi_center">
-            <div>
+            <div className="Chats">
               <ChatBubbleIcon
                 onClick={() => setActive("Chats")}
-                fontSize="small"
+                fontSize="default"
               />
               <h5>Chats</h5>
             </div>
             <br />
-            <div>
-              <GroupIcon onClick={() => setActive("Groups")} fontSize="small" />
+            <div className="Rooms">
+              <GroupIcon
+                onClick={() => setActive("Groups")}
+                fontSize="default"
+              />
               <h5>Rooms</h5>
             </div>
           </div>
           <div className="chitthi_buttom">
-            <GroupAddIcon onClick={createRoom} fontSize="small" />
+            <div className="Create_room">
+              <GroupAddIcon onClick={createRoom} fontSize="small" />
+              <h5>Create</h5>
+              <h5>Room</h5>
+            </div>
             <IconButton>
               <Avatar
                 className="avatar"
@@ -400,22 +407,6 @@ function Chitthi() {
                   </p>
                 </div>
               </div>
-              <div className="chitthi_wrapper_center_top_right">
-                <div className="members">
-                  <h3>Members :</h3>
-                </div>
-                <div className="add_and_avatar">
-                  <IconButton>
-                    <AddIcon />
-                  </IconButton>
-                  <Avatar />
-                </div>
-                <div className="settings">
-                  <IconButton>
-                    <SettingsIcon />
-                  </IconButton>
-                </div>
-              </div>
             </div>
             <div className="chat_screen">
               {messages.map((message) => (
@@ -429,7 +420,7 @@ function Chitthi() {
                       <img src={message.groupImage} alt="" />
                     </div>
                   )}
-                  <p>{message.message}</p>
+                  <p className="message">{message.message}</p>
                   <span className="chat_timestamp">
                     {new Date(message.timestamp?.toDate()).toLocaleString()}
                   </span>
@@ -454,12 +445,31 @@ function Chitthi() {
             )}
             <div className="chitthi_chat_footer">
               <div className="add_docs">
-                <IconButton>
-                  <ImageIcon
-                    onClick={() => imagePickerRefG.current.click()}
-                    fontSize="default"
-                  />
-                </IconButton>
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  onClick={() => imagePickerRefG.current.click()}
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M14.2639 15.9375L12.5958 14.2834C11.7909 13.4851 11.3884 13.086 10.9266 12.9401C10.5204 12.8118 10.0838 12.8165 9.68048 12.9536C9.22188 13.1095 8.82814 13.5172 8.04068 14.3326L4.04409 18.2801M14.2639 15.9375L14.6053 15.599C15.4112 14.7998 15.8141 14.4002 16.2765 14.2543C16.6831 14.126 17.12 14.1311 17.5236 14.2687C17.9824 14.4251 18.3761 14.8339 19.1634 15.6514L20 16.4934M14.2639 15.9375L18.275 19.9565M18.275 19.9565C17.9176 20 17.4543 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.71569 19.5903 4.40973 19.2843 4.21799 18.908C4.12796 18.7313 4.07512 18.5321 4.04409 18.2801M18.275 19.9565C18.5293 19.9256 18.7301 19.8727 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V16.4934M4.04409 18.2801C4 17.9221 4 17.4575 4 16.8V7.2C4 6.0799 4 5.51984 4.21799 5.09202C4.40973 4.71569 4.71569 4.40973 5.09202 4.21799C5.51984 4 6.07989 4 7.2 4H16.8C17.9201 4 18.4802 4 18.908 4.21799C19.2843 4.40973 19.5903 4.71569 19.782 5.09202C20 5.51984 20 6.0799 20 7.2V16.4934M17 8.99989C17 10.1045 16.1046 10.9999 15 10.9999C13.8954 10.9999 13 10.1045 13 8.99989C13 7.89532 13.8954 6.99989 15 6.99989C16.1046 6.99989 17 7.89532 17 8.99989Z"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
                 <input
                   ref={imagePickerRefG}
                   onChange={addImageToGroup}
@@ -480,7 +490,7 @@ function Chitthi() {
                     onClick={SendMessageToRooms}
                     type="submit"
                   >
-                    Send a message
+                    Send
                   </button>
                 </form>
               </div>
@@ -494,9 +504,9 @@ function Chitthi() {
                 <IconButton>
                   <TelegramIcon
                     disabled={inputValue === ""}
-                    onClick={SendMessageToRooms}
                     type="submit"
                     fontSize="large"
+                    onClick={SendMessageToRooms}
                   />
                 </IconButton>
               </div>
@@ -517,19 +527,6 @@ function Chitthi() {
                       ]?.timestamp?.toDate()
                     ).toLocaleString()}
                   </p>
-                </div>
-              </div>
-              <div className="chitthi_wrapper_center_top_right">
-                <div className="add_and_avatar">
-                  <IconButton>
-                    <AddIcon />
-                  </IconButton>
-                  <Avatar />
-                </div>
-                <div className="settings">
-                  <IconButton>
-                    <SettingsIcon />
-                  </IconButton>
                 </div>
               </div>
             </div>
@@ -569,12 +566,31 @@ function Chitthi() {
             )}
             <div className="chitthi_chat_footer">
               <div className="add_docs">
-                <IconButton>
-                  <ImageIcon
-                    onClick={() => imagePickerRef.current.click()}
-                    fontSize="default"
-                  />
-                </IconButton>
+                <svg
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  onClick={() => imagePickerRef.current.click()}
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M14.2639 15.9375L12.5958 14.2834C11.7909 13.4851 11.3884 13.086 10.9266 12.9401C10.5204 12.8118 10.0838 12.8165 9.68048 12.9536C9.22188 13.1095 8.82814 13.5172 8.04068 14.3326L4.04409 18.2801M14.2639 15.9375L14.6053 15.599C15.4112 14.7998 15.8141 14.4002 16.2765 14.2543C16.6831 14.126 17.12 14.1311 17.5236 14.2687C17.9824 14.4251 18.3761 14.8339 19.1634 15.6514L20 16.4934M14.2639 15.9375L18.275 19.9565M18.275 19.9565C17.9176 20 17.4543 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.71569 19.5903 4.40973 19.2843 4.21799 18.908C4.12796 18.7313 4.07512 18.5321 4.04409 18.2801M18.275 19.9565C18.5293 19.9256 18.7301 19.8727 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V16.4934M4.04409 18.2801C4 17.9221 4 17.4575 4 16.8V7.2C4 6.0799 4 5.51984 4.21799 5.09202C4.40973 4.71569 4.71569 4.40973 5.09202 4.21799C5.51984 4 6.07989 4 7.2 4H16.8C17.9201 4 18.4802 4 18.908 4.21799C19.2843 4.40973 19.5903 4.71569 19.782 5.09202C20 5.51984 20 6.0799 20 7.2V16.4934M17 8.99989C17 10.1045 16.1046 10.9999 15 10.9999C13.8954 10.9999 13 10.1045 13 8.99989C13 7.89532 13.8954 6.99989 15 6.99989C16.1046 6.99989 17 7.89532 17 8.99989Z"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
                 <input
                   ref={imagePickerRef}
                   onChange={addImageToMessage}
@@ -591,29 +607,45 @@ function Chitthi() {
                     placeholder="Type a message"
                   />
                   <button
+                    className="Send_button"
                     disabled={chatInput === ""}
                     onClick={SendMessageToChat}
                     type="submit"
                   >
-                    Send a message
+                    <svg
+                      fill="#000000"
+                      height="22px"
+                      width="22px"
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 495.003 495.003"
+                      xml:space="preserve"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <g id="XMLID_51_">
+                          {" "}
+                          <path
+                            id="XMLID_53_"
+                            d="M164.711,456.687c0,2.966,1.647,5.686,4.266,7.072c2.617,1.385,5.799,1.207,8.245-0.468l55.09-37.616 l-67.6-32.22V456.687z"
+                          ></path>{" "}
+                          <path
+                            id="XMLID_52_"
+                            d="M492.431,32.443c-1.513-1.395-3.466-2.125-5.44-2.125c-1.19,0-2.377,0.264-3.5,0.816L7.905,264.422 c-4.861,2.389-7.937,7.353-7.904,12.783c0.033,5.423,3.161,10.353,8.057,12.689l125.342,59.724l250.62-205.99L164.455,364.414 l156.145,74.4c1.918,0.919,4.012,1.376,6.084,1.376c1.768,0,3.519-0.322,5.186-0.977c3.637-1.438,6.527-4.318,7.97-7.956 L494.436,41.257C495.66,38.188,494.862,34.679,492.431,32.443z"
+                          ></path>{" "}
+                        </g>{" "}
+                      </g>
+                    </svg>
                   </button>
                 </form>
-              </div>
-              <div className="emoji_send">
-                <IconButton>
-                  <EmojiEmotionsIcon
-                    onClick={() => setShowEmojis(!showEmojis)}
-                    fontSize="default"
-                  />
-                </IconButton>
-                <IconButton>
-                  <TelegramIcon
-                    disabled={chatInput === ""}
-                    onClick={SendMessageToChat}
-                    type="submit"
-                    fontSize="large"
-                  />
-                </IconButton>
               </div>
             </div>
           </div>

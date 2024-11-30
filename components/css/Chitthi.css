@@ -30,9 +30,10 @@
 .chitthi_left {
   display: flex;
   flex-direction: column;
-  /* background-color: teal; */
+  background-color: black;
   justify-content: space-between;
-  width: 3.7rem;
+  border-radius: 10px;
+  max-width: 3.5rem;
   padding: 5px;
 }
 
@@ -43,8 +44,8 @@
 
 .chitthi_logo {
   justify-self: center;
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
 }
 
 .chitthi_center {
@@ -55,11 +56,56 @@
   flex-direction: column;
 }
 
+.Chats {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.Chats > h5 {
+  font-size: 12px;
+  font-weight: 200;
+  padding-top: 5px;
+}
+
+.Rooms {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.Rooms > h5 {
+  font-size: 12px;
+  font-weight: 200;
+  padding-top: 5px;
+}
+
 .chitthi_buttom {
   display: flex;
   justify-content: flex-end;
   /* background-color: white; */
   flex-direction: column;
+}
+
+.Create_room {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #303030;
+  align-items: center;
+  border-radius: 15px;
+  border-color: #000000;
+}
+
+.Create_room > h5 {
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .chitthi_buttom > .MuiSvgIcon-root {
@@ -77,12 +123,9 @@
 .chitthi_wrapper_left {
   background-color: #242424;
   display: flex;
-  flex: 0.2;
   flex-direction: column;
   padding: 10px;
-  min-width: 23rem;
-
-  border-radius: 10px 0 0 10px;
+  width: 21rem;
 }
 
 .add_conversation {
@@ -103,7 +146,7 @@
   font-family: "Rubik", sans-serif;
   font-weight: 500;
   border-radius: 10px;
-  height: 4rem;
+  height: 3rem;
   width: 18rem;
 }
 
@@ -137,25 +180,26 @@
 .search_bar {
   display: flex;
   height: 3.5rem;
-  width: 22.5rem;
+  width: 21rem;
   border-radius: 10px;
-  padding-right: 10px;
+  /* padding-right: 10px; */
   align-items: center;
   justify-content: space-between;
-  background-color: #ffffff;
+  background-color: #303030;
 }
 
 .search_bar > input {
-  background-color: #ffffff;
+  background-color: #242424;
   color: black;
   flex: 1;
   border-radius: 5px;
   height: 2.5rem;
   width: 22.5rem;
   font-size: 18px;
+  padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-left: 10px;
+  margin-left: 10px;
   border: none;
   outline-width: 0;
 }
@@ -183,14 +227,19 @@
 }
 
 .chat_screen {
-  flex: 0.95;
   padding-top: 10px;
   padding-bottom: 1rem;
   overflow-y: scroll;
 }
 
 .chat_screen > p {
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.chat_timestamp {
+  font-size: 6px;
+  font-weight: 100;
 }
 
 .chitthi_chat_footer {
@@ -224,49 +273,32 @@
 /* Header */
 
 .chitthi_wrapper_center_top {
-  display: flex;
-  flex-direction: row;
   padding: 15px;
   padding-bottom: 20px;
-  justify-content: space-between;
-  border-bottom: 1px solid #e6e5ea;
+  background-color: #303030;
+  border-radius: 10px;
 }
 
 .chitthi_wrapper_center_top_left {
   display: flex;
-  align-items: center;
-}
-
-.chitthi_wrapper_center_top_right {
-  display: flex;
-  flex-direction: row;
+  color: #303030;
+  font-size: 12px;
   align-items: center;
 }
 
 .lastSeen {
-  font-size: 18px;
-  font-weight: 500;
-}
-
-.members {
-  color: #000;
-  padding-right: 10px;
-}
-
-.add_and_avatar {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-right: 10px;
+  color: #bfbfc1;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .chat_message {
   position: relative;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 16px;
+  padding: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
-  max-width: 30rem;
+  max-width: 25rem;
   word-break: break-word;
   background-color: #000000;
   color: rgb(255, 255, 255);
@@ -274,8 +306,9 @@
 }
 
 .chat_message > p {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 200;
+  margin-left: 5px;
 }
 
 .chat_reciever {
@@ -287,20 +320,21 @@
 }
 
 .chat_reciever > p {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 16px;
+  font-weight: 200;
 }
 
 .chat_timestamp {
-  margin-left: 10px;
-  font-size: 12px;
+  margin-left: 5px;
+  font-size: 10px;
 }
 
-.trash {
-  cursor: pointer;
+.Form {
+  display: flex;
 }
+
 .input_bar > form > button {
-  display: none;
+  display: flex;
 }
 
 .input_bar > form > input {
@@ -315,7 +349,22 @@
   border: none;
   outline-width: 0;
 }
-s
+
+.Send_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background: black;
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 7px;
+  height: 3rem;
+  width: 11rem;
+}
 
 /* CHITTHI RIGHT SECTION */
 
