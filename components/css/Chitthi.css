@@ -244,6 +244,8 @@
 
 .chitthi_chat_footer {
   display: flex;
+  position: fixed;
+  bottom: 0;
   flex-direction: row;
   background-color: #303030;
   margin-bottom: 10px;
@@ -331,6 +333,10 @@
 
 .Form {
   display: flex;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* left: 0; */
+  /* width: 100%; */
 }
 
 .input_bar > form > button {
@@ -339,7 +345,7 @@
 
 .input_bar > form > input {
   background-color: #242424;
-  border-radius: 5px;
+  border-radius: 10px;
   height: 2rem;
   width: 21rem;
   font-size: 18px;
@@ -354,16 +360,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  margin-left: 5px;
   border: none;
   cursor: pointer;
-  background: black;
+  background-color: #242424;
   color: #ffffff;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
   font-size: 16px;
-  border-radius: 7px;
-  height: 3rem;
-  width: 11rem;
+  border-radius: 10px;
+  height: 3.2rem;
+  width: 4rem;
 }
 
 /* CHITTHI RIGHT SECTION */
