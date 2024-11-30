@@ -670,9 +670,13 @@ function Chitthi() {
         {/* Right Side of the Chitthi */}
         <div className="chitthi_wrapper_right">
           <div className="user_profile">
-            <img src={user.photoURL} alt="" />
-            <h4>{user.displayName}</h4>
-            <p>{user.email}</p>
+            <div>
+              <img className="user_image" src={user.photoURL} alt="" />
+            </div>
+            <div className="info">
+              <h4>{user.displayName}</h4>
+              <p>{user.email}</p>
+            </div>
           </div>
           {/* Only Chat Images */}
           {active === "Chats" && (
