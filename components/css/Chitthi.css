@@ -139,10 +139,6 @@
   margin-left: 10px;
 }
 
-.add {
-  padding-right: 5px;
-}
-
 .add_conversation > button {
   border: none;
   background: black;
@@ -198,14 +194,19 @@
   flex: 1;
   border-radius: 5px;
   height: 2.5rem;
-  width: 22.5rem;
+  width: 10rem;
   font-size: 18px;
   padding-left: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 10px;
+  margin-right: 5px;
   border: none;
   outline-width: 0;
+}
+
+.user_search {
+  padding-right: 5px;
 }
 
 .chats_holder {
