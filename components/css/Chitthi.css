@@ -219,10 +219,9 @@
 .chitthi_wrapper_center {
   background-color: #242424;
   display: flex;
-  flex: 0.7;
   flex-direction: column;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   min-width: 23rem;
 }
 
@@ -230,6 +229,7 @@
   padding-top: 10px;
   padding-bottom: 1rem;
   overflow-y: scroll;
+  width: 43rem;
 }
 
 .chat_screen > p {
@@ -275,10 +275,12 @@
 /* Header */
 
 .chitthi_wrapper_center_top {
-  padding: 15px;
-  padding-bottom: 20px;
+  display: flex;
+  align-items: start;
+  padding: 20px;
   background-color: #303030;
   border-radius: 10px;
+  width: 95%;
 }
 
 .chitthi_wrapper_center_top_left {
@@ -347,7 +349,7 @@
   background-color: #242424;
   border-radius: 10px;
   height: 2rem;
-  width: 21rem;
+  width: 34rem;
   font-size: 18px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -362,6 +364,7 @@
   justify-content: center;
   margin-top: 10px;
   margin-left: 5px;
+  margin-right: 10px;
   border: none;
   cursor: pointer;
   background-color: #242424;
@@ -381,8 +384,8 @@
   display: flex;
   flex-direction: column;
   color: black;
+  width: 29%;
   border-radius: 0 10px 10px 0;
-  overflow-y: scroll;
 }
 
 .user_profile {
@@ -390,10 +393,11 @@
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  padding: 30px;
-  margin: 20px;
+  padding: 20px;
+  margin-top: 0;
+  margin-left: 10px;
   justify-content: center;
-  background-color: #242424;
+  background-color: #303030;
   color: black;
 }
 
@@ -405,15 +409,25 @@
 
 .user_profile > h4 {
   padding: 10px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.user_profile > p {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 100;
 }
 
 .user_images {
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: #303030;
   border-radius: 10px;
   padding: 15px;
-  margin: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
   margin-top: 5px;
   overflow-y: scroll;
 }
@@ -424,17 +438,24 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #303030;
 }
 
 .sub_heading_container {
   display: flex;
-  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
 }
 
 .sub_heading_container > h3 {
-  padding-right: 14rem;
-  padding-top: 0.7rem;
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 22px;
+}
+
+.down_arrow {
+  margin-top: 5px;
 }
 
 .image_container_holder {

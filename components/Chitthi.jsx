@@ -45,6 +45,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { getAuth } from "firebase/auth";
+import { Diversity1Outlined } from "@mui/icons-material";
 // import { firebaseConfig } from "./firebaseConfig";
 
 function Chitthi() {
@@ -486,29 +487,45 @@ function Chitthi() {
                     placeholder="Type a message"
                   />
                   <button
+                    className="Send_button"
                     disabled={inputValue === ""}
                     onClick={SendMessageToRooms}
                     type="submit"
                   >
-                    Send
+                    <svg
+                      fill="#000000"
+                      height="22px"
+                      width="22px"
+                      version="1.1"
+                      id="Capa_1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      viewBox="0 0 495.003 495.003"
+                      xml:space="preserve"
+                    >
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></g>
+                      <g id="SVGRepo_iconCarrier">
+                        {" "}
+                        <g id="XMLID_51_">
+                          {" "}
+                          <path
+                            id="XMLID_53_"
+                            d="M164.711,456.687c0,2.966,1.647,5.686,4.266,7.072c2.617,1.385,5.799,1.207,8.245-0.468l55.09-37.616 l-67.6-32.22V456.687z"
+                          ></path>{" "}
+                          <path
+                            id="XMLID_52_"
+                            d="M492.431,32.443c-1.513-1.395-3.466-2.125-5.44-2.125c-1.19,0-2.377,0.264-3.5,0.816L7.905,264.422 c-4.861,2.389-7.937,7.353-7.904,12.783c0.033,5.423,3.161,10.353,8.057,12.689l125.342,59.724l250.62-205.99L164.455,364.414 l156.145,74.4c1.918,0.919,4.012,1.376,6.084,1.376c1.768,0,3.519-0.322,5.186-0.977c3.637-1.438,6.527-4.318,7.97-7.956 L494.436,41.257C495.66,38.188,494.862,34.679,492.431,32.443z"
+                          ></path>{" "}
+                        </g>{" "}
+                      </g>
+                    </svg>
                   </button>
                 </form>
-              </div>
-              <div className="emoji_send">
-                <IconButton>
-                  <EmojiEmotionsIcon
-                    onClick={() => setShowEmojis(!showEmojis)}
-                    fontSize="default"
-                  />
-                </IconButton>
-                <IconButton>
-                  <TelegramIcon
-                    disabled={inputValue === ""}
-                    type="submit"
-                    fontSize="large"
-                    onClick={SendMessageToRooms}
-                  />
-                </IconButton>
               </div>
             </div>
           </div>
@@ -660,13 +677,35 @@ function Chitthi() {
           {/* Only Chat Images */}
           {active === "Chats" && (
             <div className="user_images">
-              <div className="images_header">
-                <div className="sub_heading_container">
-                  <h3>Images</h3>
-                  <IconButton>
-                    <KeyboardArrowDownIcon onClick={() => setIsOpen(!isOpen)} />
-                  </IconButton>
-                </div>
+              <div className="sub_heading_container">
+                <h3>Images</h3>
+                <svg
+                  className="down_arrow"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#000000"
+                  onClick={() => setIsOpen(!isOpen)}
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M12 6V18M12 18L7 13M12 18L17 13"
+                      stroke="#ffffff"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
               </div>
               {personMessages.map((message) => (
                 <div className="image_container_holder">
@@ -690,15 +729,35 @@ function Chitthi() {
           {/* Only Groups Images */}
           {active === "Groups" && (
             <div className="user_images">
-              <div className="images_header">
-                <div className="sub_heading_container">
-                  <h3>Images</h3>
-                  <IconButton>
-                    <KeyboardArrowDownIcon
-                      onClick={() => setDocOpen(!isDocOpen)}
-                    />
-                  </IconButton>
-                </div>
+              <div className="sub_heading_container">
+                <h3>Images</h3>
+                <svg
+                  className="down_arrow"
+                  width="24px"
+                  height="24px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  stroke="#000000"
+                  onClick={() => setDocOpen(!isDocOpen)}
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    {" "}
+                    <path
+                      d="M12 6V18M12 18L7 13M12 18L17 13"
+                      stroke="#ffffff"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>{" "}
+                  </g>
+                </svg>
               </div>
               {messages.map((message) => (
                 <div className="image_container_holder">
