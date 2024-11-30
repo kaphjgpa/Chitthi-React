@@ -52,7 +52,7 @@ function Chitthi() {
   // This is for Group Chat
   const [active, setActive] = useState("");
   const { roomId } = useParams();
-  const [input, setInput] = useState("");
+  const [inputValue, setInputValue] = useState("");
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -74,9 +74,11 @@ function Chitthi() {
   // Add Emojis in Chats or Groups
   const [showEmojis, setShowEmojis] = useState(false);
   const [chosenEmoji, setChosenEmoji] = useState(null);
+
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
   };
+
   // Logic behind Image with text in 1-1
   const addImageToMessage = (e) => {
     const reader = new FileReader();
@@ -87,24 +89,10 @@ function Chitthi() {
       setImageToMessage(readerEvent.target.result);
     };
   };
-  // Logic behind Images with text in Groups
-  const addImageToGroup = (e) => {
-    const greader = new FileReader();
-    if (e.target.files[0]) {
-      greader.readAsDataURL(e.target.files[0]);
-    }
-    greader.onload = (readerEvent) => {
-      setImageToGroups(readerEvent.target.result);
-    };
-  };
 
   // Remove the image from State for 1-1
   const removeImage = () => {
     setImageToMessage(null);
-  };
-  // Remove the image from State for groups
-  const removeGroupImage = () => {
-    setImageToGroups(null);
   };
 
   // Auto Scroll to Bottom
@@ -165,7 +153,7 @@ function Chitthi() {
           ?.length > 0
     );
 
-  const SendMessage = async (e) => {
+  const SendMessageToChat = async (e) => {
     e.preventDefault(); // Stop this from refreshing the page
 
     try {
@@ -225,6 +213,24 @@ function Chitthi() {
 
   //room functionality
   //THIS FUNCTION MOUNT THE ALL ROOMS THAT ARE IN OUR DATABASE
+
+  //-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  // Logic behind Images with text in Groups
+  const addImageToGroup = (e) => {
+    const greader = new FileReader();
+    if (e.target.files[0]) {
+      greader.readAsDataURL(e.target.files[0]);
+    }
+    greader.onload = (readerEvent) => {
+      setImageToGroups(readerEvent.target.result);
+    };
+  };
+  //---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  // Remove the image from State for groups
+  const removeGroupImage = () => {
+    setImageToGroups(null);
+  };
+
   useEffect(() => {
     const roomsRef = collection(db, "rooms");
     const unsubscribe = onSnapshot(roomsRef, (snapshot) => {
@@ -274,12 +280,12 @@ function Chitthi() {
     }
   }, [roomId]);
 
-  const sendMessage = (e) => {
+  const SendMessageToRooms = (e) => {
     e.preventDefault();
 
     const messageRef = collection(db, "rooms", roomId, "messages");
     addDoc(messageRef, {
-      message: input,
+      message: inputValue,
       name: user.displayName,
       email: user.email,
       photoURL: user.photoURL,
@@ -304,7 +310,8 @@ function Chitthi() {
       }
     });
 
-    setInput("");
+    setInputValue("");
+    autoScroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -463,12 +470,16 @@ function Chitthi() {
               <div className="input_bar">
                 <form className="Form">
                   <input
-                    value={input}
-                    onChange={(e) => setInput(e.target.value)}
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
                     type="text"
                     placeholder="Type a message"
                   />
-                  <button disabled={!input} onClick={sendMessage} type="submit">
+                  <button
+                    disabled={inputValue === ""}
+                    onClick={SendMessageToRooms}
+                    type="submit"
+                  >
                     Send a message
                   </button>
                 </form>
@@ -482,8 +493,8 @@ function Chitthi() {
                 </IconButton>
                 <IconButton>
                   <TelegramIcon
-                    disabled={!input}
-                    onClick={sendMessage}
+                    disabled={inputValue === ""}
+                    onClick={SendMessageToRooms}
                     type="submit"
                     fontSize="large"
                   />
@@ -580,8 +591,8 @@ function Chitthi() {
                     placeholder="Type a message"
                   />
                   <button
-                    disabled={!chatInput}
-                    onClick={SendMessage}
+                    disabled={chatInput === ""}
+                    onClick={SendMessageToChat}
                     type="submit"
                   >
                     Send a message
@@ -597,8 +608,8 @@ function Chitthi() {
                 </IconButton>
                 <IconButton>
                   <TelegramIcon
-                    disabled={!chatInput}
-                    onClick={SendMessage}
+                    disabled={chatInput === ""}
+                    onClick={SendMessageToChat}
                     type="submit"
                     fontSize="large"
                   />
