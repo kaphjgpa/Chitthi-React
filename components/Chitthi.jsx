@@ -787,5 +787,4 @@ function Chitthi() {
     </div>
   );
 }
-
 export default Chitthi;

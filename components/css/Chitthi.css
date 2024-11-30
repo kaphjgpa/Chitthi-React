@@ -282,6 +282,14 @@
   border-radius: 10px;
   width: 95%;
 }
+.chitthi_wrapper_center_top_group {
+  display: flex;
+  align-items: start;
+  padding: 5px;
+  background-color: #303030;
+  border-radius: 10px;
+  width: 95%;
+}
 
 .chitthi_wrapper_center_top_left {
   display: flex;
@@ -448,6 +456,7 @@
 }
 
 .sub_heading_container {
+  /* position: fixed; */
   display: flex;
   justify-items: center;
   align-items: center;
@@ -475,6 +484,7 @@
 
 .both_users_images {
   display: flex;
+  flex-direction: row;
   padding: 0.5rem;
   width: fit-content;
 }
@@ -482,6 +492,7 @@
 .image {
   width: 100%;
   object-fit: contain;
+  border-radius: 10px;
 }
 
 .user_file {
