@@ -234,7 +234,7 @@
   padding-top: 10px;
   padding-bottom: 1rem;
   overflow-y: scroll;
-  width: 43rem;
+  width: 42rem;
 }
 
 .chat_screen > p {
@@ -424,6 +424,8 @@
   margin-left: 10px;
   background-color: #242424;
   padding: 35px;
+  padding-right: 10px;
+  padding-left: 10px;
   border-radius: 10px;
 }
 
