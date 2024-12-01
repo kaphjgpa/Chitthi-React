@@ -340,7 +340,7 @@
   max-width: 30rem;
   align-items: flex-start;
   word-break: break-word;
-  background-color: #0a80fe;
+  background-color: #34c85a;
 }
 
 .chat_reciever > p {
@@ -543,11 +543,17 @@
 }
 
 .send_Image_Container {
-  display: flex;
+  display: inline-flex; /* Use inline-flex to size based on content */
   flex-direction: column;
+  align-items: center; /* Center the content horizontally */
   object-fit: contain;
-  width: 10rem;
-  backdrop-filter: blur(6rem);
+  max-width: 10rem; /* Limit maximum width */
+  padding: 0.5rem; /* Add some padding for better spacing */
+  background: rgba(255, 255, 255, 0.7); /* Optional: Add a subtle background */
+  backdrop-filter: blur(6px); /* Adjusted to px for clarity */
+  border-radius: 8px; /* Optional: Add rounded corners for aesthetics */
+  margin-bottom: 80px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
 }
 
 .send_Image_Container > h3 {
