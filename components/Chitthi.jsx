@@ -310,7 +310,7 @@ function Chitthi() {
   return (
     <div className="chitthi_wrapper">
       <Helmet>
-        <title>Login - Chitthi</title>
+        <title>Chitthi</title>
       </Helmet>
       <div className="chitthi_body">
         <div className="chitthi_left">
@@ -501,7 +501,7 @@ function Chitthi() {
             </div>
           </div>
           <div className="search_bar">
-            <input type="text" placeholder="Search here" />
+            <input type="text" placeholder="Search" />
             <svg
               className="user_search"
               width="24px"
