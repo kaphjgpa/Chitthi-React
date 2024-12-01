@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 58rem;
+  height: 100vh;
+  width: 100vw;
   padding: 10px;
   margin: 10px;
   margin-top: 30px;
@@ -518,6 +519,7 @@
 .sub_heading_container > h3 {
   color: #ffffff;
   font-weight: 200;
+  margin-right: 10px;
   font-size: 22px;
 }
 

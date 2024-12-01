@@ -11,8 +11,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import BlackLogo from "/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
-import data from "@emoji-mart/data";
-// import Picker from "@emoji-mart/react";
+import { Helmet } from "react-helmet"; // For managing document head
 import EmojiPicker from "emoji-picker-react";
 
 // After Update Firebase v9+
@@ -310,6 +309,9 @@ function Chitthi() {
 
   return (
     <div className="chitthi_wrapper">
+      <Helmet>
+        <title>Login - Chitthi</title>
+      </Helmet>
       <div className="chitthi_body">
         <div className="chitthi_left">
           <div className="chitthi_top">
@@ -876,13 +878,11 @@ function Chitthi() {
               <div className="sub_heading_container">
                 <h3>Images</h3>
                 <svg
-                  className="down_arrow"
                   width="24px"
                   height="24px"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  stroke="#000000"
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -893,13 +893,17 @@ function Chitthi() {
                   ></g>
                   <g id="SVGRepo_iconCarrier">
                     {" "}
-                    <path
-                      d="M12 6V18M12 18L7 13M12 18L17 13"
-                      stroke="#ffffff"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>{" "}
+                    <g id="File / Download_Package">
+                      {" "}
+                      <path
+                        id="Vector"
+                        d="M4 8V16.8C4 17.9201 4 18.4798 4.21799 18.9076C4.40973 19.2839 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2839 19.7822 18.9076C20 18.4802 20 17.921 20 16.8031V8M4 8H20M4 8L5.36518 5.61089C5.7002 5.0246 5.86768 4.73151 6.10325 4.51807C6.31184 4.32907 6.55859 4.18605 6.82617 4.09871C7.12861 4 7.46623 4 8.14258 4H15.8571C16.5334 4 16.8723 4 17.1747 4.09871C17.4423 4.18605 17.6879 4.32907 17.8965 4.51807C18.1322 4.73168 18.3002 5.02507 18.6357 5.6123L20 8M12 11V17M12 17L15 15M12 17L9 15"
+                        stroke="#ffffff"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>{" "}
+                    </g>{" "}
                   </g>
                 </svg>
               </div>
