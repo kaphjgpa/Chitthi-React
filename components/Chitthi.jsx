@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import firebase from "firebase/compat/app";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../src/firebase";
@@ -7,18 +6,8 @@ import * as EmailValidator from "email-validator";
 import "../components/css/Chitthi.css";
 import { Avatar, IconButton } from "@material-ui/core";
 // import Avatar from "@mui/material/Avatar";
-import FindInPageOutlinedIcon from "@mui/icons-material/FindInPageOutlined";
-import SettingsIcon from "@mui/icons-material/Settings";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import GroupIcon from "@mui/icons-material/Group";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CancelIcon from "@mui/icons-material/Cancel";
-import AddIcon from "@mui/icons-material/Add";
-import ImageIcon from "@mui/icons-material/Image";
-import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
-import TelegramIcon from "@mui/icons-material/Telegram";
 import BlackLogo from "/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
@@ -45,7 +34,6 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { getAuth } from "firebase/auth";
-import { Diversity1Outlined } from "@mui/icons-material";
 // import { firebaseConfig } from "./firebaseConfig";
 
 function Chitthi() {
@@ -155,17 +143,17 @@ function Chitthi() {
     );
 
   const SendMessageToChat = async (e) => {
-    e.preventDefault(); // Stop this from refreshing the page
+    e.preventDefault(); // Prevent page refresh
 
     try {
-      // Update user's last seen
+      // Update last seen for the user
       await setDoc(
         doc(db, "users", user.uid),
         { lastSeen: serverTimestamp() },
         { merge: true }
       );
 
-      // Add message to the "messages" subcollection
+      // Add a new message to the chat
       const messageRef = await addDoc(
         collection(db, "chats", chatId, "messages"),
         {
@@ -177,41 +165,35 @@ function Chitthi() {
         }
       );
 
-      // Handle image upload if there's an image
+      // If there's an image to upload
       if (imageToMessage) {
-        const uploadTaskRef = ref(storage, `images/${messageRef.id}`);
-        const uploadTask = uploadString(
-          uploadTaskRef,
-          imageToMessage,
-          "data_url"
-        );
-
-        removeImage();
+        const imageRef = ref(storage, `images/${messageRef.id}`);
+        const uploadTask = uploadString(imageRef, imageToMessage, "data_url");
 
         uploadTask
           .then(async () => {
-            const url = await getDownloadURL(uploadTaskRef);
+            const url = await getDownloadURL(imageRef);
 
             // Update the message with the image URL
-            await updateDoc(
+            await setDoc(
               doc(db, "chats", chatId, "messages", messageRef.id),
-              {
-                sendImage: url,
-              }
+              { sendImage: url },
+              { merge: true }
             );
           })
           .catch((error) => {
-            console.error("Error uploading image:", error);
+            console.error("Image upload failed: ", error);
           });
+
+        removeImage();
       }
-
-      setChatInput("");
-      autoScroll.current.scrollIntoView({ behavior: "smooth" });
     } catch (error) {
-      console.error("Error sending message:", error);
+      console.error("Error sending message: ", error);
     }
-  };
 
+    setChatInput("");
+    autoScroll.current.scrollIntoView({ behavior: "smooth" });
+  };
   //room functionality
   //THIS FUNCTION MOUNT THE ALL ROOMS THAT ARE IN OUR DATABASE
 
@@ -308,6 +290,7 @@ function Chitthi() {
             });
           })
           .catch((error) => console.error(error));
+        removeGroupImage();
       }
     });
 
@@ -453,13 +436,11 @@ function Chitthi() {
               <h5>Create</h5>
               <h5>Room</h5>
             </div>
-            <IconButton>
-              <Avatar
-                className="avatar"
-                src={user.photoURL}
-                onClick={() => auth.signOut()}
-              />
-            </IconButton>
+            <Avatar
+              className="avatar"
+              src={user.photoURL}
+              onClick={() => auth.signOut()}
+            />
           </div>
         </div>
         <div className="chitthi_wrapper_left">
@@ -510,6 +491,7 @@ function Chitthi() {
           <div className="search_bar">
             <input type="text" placeholder="Search here" />
             <svg
+              className="user_search"
               width="24px"
               height="24px"
               viewBox="0 0 24 24"
