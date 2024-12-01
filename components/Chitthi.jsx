@@ -11,7 +11,8 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import BlackLogo from "/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
-import Emoji from "./Emoji";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 // After Update Firebase v9+
 import {
@@ -60,14 +61,13 @@ function Chitthi() {
 
   const [personMessages, setPersonMessages] = useState([]);
   const [personName, setPersonName] = useState("");
-  // Add Emojis in Chats or Groups
-  const [showEmojis, setShowEmojis] = useState(false);
-  const [chosenEmoji, setChosenEmoji] = useState(null);
+  // Add Emojis in Chats and Groups
+  const [isVisible, setIsVisible] = useState(false);
+  const [Emoji, setEmoji] = useState("");
 
-  const onEmojiClick = (event, emojiObject) => {
-    setChosenEmoji(emojiObject);
+  const toggleVisibility = () => {
+    setIsVisible((prev) => !prev); // Toggle visibility
   };
-
   // Logic behind Image with text in 1-1
   const addImageToMessage = (e) => {
     const reader = new FileReader();
@@ -575,9 +575,9 @@ function Chitthi() {
               ))}
               <div className="autoScroll" ref={autoScroll}></div>
             </div>
-            {showEmojis ? (
+            {/* {showEmojis ? (
               <Emoji className="emoji_tray" onEmojiClick={onEmojiClick} />
-            ) : null}
+            ) : null} */}
             {imageToGroups && (
               <div className="send_Image_Container">
                 <CancelIcon
@@ -713,9 +713,9 @@ function Chitthi() {
               ))}
               <div className="autoScroll" ref={autoScroll}></div>
             </div>
-            {showEmojis ? (
+            {/* {showEmojis ? (
               <Emoji className="emoji_tray" onEmojiClick={onEmojiClick} />
-            ) : null}
+            ) : null} */}
             {imageToMessage && (
               <div className="send_Image_Container">
                 <CancelIcon
@@ -729,31 +729,69 @@ function Chitthi() {
             )}
             <div className="chitthi_chat_footer">
               <div className="add_docs">
-                <svg
-                  width="24px"
-                  height="24px"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <button
+                  className="image_add"
                   onClick={() => imagePickerRef.current.click()}
                 >
-                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                  <g
-                    id="SVGRepo_tracerCarrier"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></g>
-                  <g id="SVGRepo_iconCarrier">
-                    {" "}
-                    <path
-                      d="M14.2639 15.9375L12.5958 14.2834C11.7909 13.4851 11.3884 13.086 10.9266 12.9401C10.5204 12.8118 10.0838 12.8165 9.68048 12.9536C9.22188 13.1095 8.82814 13.5172 8.04068 14.3326L4.04409 18.2801M14.2639 15.9375L14.6053 15.599C15.4112 14.7998 15.8141 14.4002 16.2765 14.2543C16.6831 14.126 17.12 14.1311 17.5236 14.2687C17.9824 14.4251 18.3761 14.8339 19.1634 15.6514L20 16.4934M14.2639 15.9375L18.275 19.9565M18.275 19.9565C17.9176 20 17.4543 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.71569 19.5903 4.40973 19.2843 4.21799 18.908C4.12796 18.7313 4.07512 18.5321 4.04409 18.2801M18.275 19.9565C18.5293 19.9256 18.7301 19.8727 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V16.4934M4.04409 18.2801C4 17.9221 4 17.4575 4 16.8V7.2C4 6.0799 4 5.51984 4.21799 5.09202C4.40973 4.71569 4.71569 4.40973 5.09202 4.21799C5.51984 4 6.07989 4 7.2 4H16.8C17.9201 4 18.4802 4 18.908 4.21799C19.2843 4.40973 19.5903 4.71569 19.782 5.09202C20 5.51984 20 6.0799 20 7.2V16.4934M17 8.99989C17 10.1045 16.1046 10.9999 15 10.9999C13.8954 10.9999 13 10.1045 13 8.99989C13 7.89532 13.8954 6.99989 15 6.99989C16.1046 6.99989 17 7.89532 17 8.99989Z"
-                      stroke="#000000"
-                      stroke-width="2"
+                  <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                    ></path>{" "}
-                  </g>
-                </svg>
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {" "}
+                      <path
+                        d="M14.2647 15.9377L12.5473 14.2346C11.758 13.4519 11.3633 13.0605 10.9089 12.9137C10.5092 12.7845 10.079 12.7845 9.67922 12.9137C9.22485 13.0605 8.83017 13.4519 8.04082 14.2346L4.04193 18.2622M14.2647 15.9377L14.606 15.5991C15.412 14.7999 15.8149 14.4003 16.2773 14.2545C16.6839 14.1262 17.1208 14.1312 17.5244 14.2688C17.9832 14.4253 18.3769 14.834 19.1642 15.6515L20 16.5001M14.2647 15.9377L18.22 19.9628M18.22 19.9628C17.8703 20 17.4213 20 16.8 20H7.2C6.07989 20 5.51984 20 5.09202 19.782C4.7157 19.5903 4.40973 19.2843 4.21799 18.908C4.12583 18.7271 4.07264 18.5226 4.04193 18.2622M18.22 19.9628C18.5007 19.9329 18.7175 19.8791 18.908 19.782C19.2843 19.5903 19.5903 19.2843 19.782 18.908C20 18.4802 20 17.9201 20 16.8V13M11 4H7.2C6.07989 4 5.51984 4 5.09202 4.21799C4.7157 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.0799 4 7.2V16.8C4 17.4466 4 17.9066 4.04193 18.2622M18 9V6M18 6V3M18 6H21M18 6H15"
+                        stroke="#ffffff"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>{" "}
+                    </g>
+                  </svg>
+                </button>
+                <button className="emoji_add" onClick={toggleVisibility}>
+                  <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      {" "}
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM8.1851 15.7508C8.2858 15.349 8.69315 15.1049 9.09494 15.2056C10.2252 15.4889 11.5232 15.4924 12.841 15.1393C14.1588 14.7862 15.2811 14.1342 16.1183 13.3237C16.4159 13.0356 16.8908 13.0433 17.1789 13.3409C17.467 13.6385 17.4593 14.1133 17.1617 14.4014C16.8142 14.7378 16.4297 15.0492 16.0128 15.3301L16.1708 15.652C16.5394 16.4031 16.2223 17.3106 15.4661 17.6685C14.7249 18.0194 13.8393 17.71 13.478 16.9738L13.2817 16.574L13.2292 16.5882C11.6739 17.005 10.1166 17.0081 8.73026 16.6606C8.32847 16.5599 8.0844 16.1526 8.1851 15.7508ZM15.4754 9.51572C15.6898 10.3159 15.4311 11.0805 14.8977 11.2234C14.3642 11.3664 13.7579 10.8336 13.5435 10.0334C13.3291 9.23316 13.5877 8.4686 14.1212 8.32565C14.6547 8.18271 15.2609 8.71552 15.4754 9.51572ZM9.10225 12.7764C9.63571 12.6335 9.89436 11.8689 9.67994 11.0687C9.46553 10.2685 8.85926 9.73569 8.32579 9.87863C7.79232 10.0216 7.53368 10.7861 7.74809 11.5863C7.9625 12.3865 8.56878 12.9194 9.10225 12.7764Z"
+                        fill="#ffffff"
+                      ></path>{" "}
+                    </g>
+                  </svg>
+                </button>
+                {isVisible && (
+                  <Picker
+                    className="Emoji_tray"
+                    data={data}
+                    onEmojiSelect={(d) => {
+                      setEmoji(d.native);
+                    }}
+                  />
+                )}
                 <input
                   ref={imagePickerRef}
                   onChange={addImageToMessage}
@@ -764,7 +802,8 @@ function Chitthi() {
               <div className="input_bar">
                 <form className="Form">
                   <input
-                    value={chatInput}
+                    value={`${chatInput} ${Emoji}`}
+                    // value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     type="text"
                     placeholder="Type a message"

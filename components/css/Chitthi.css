@@ -365,6 +365,43 @@
   display: flex;
 }
 
+.image_add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #242424;
+  border-radius: 10px;
+  height: 3.2rem;
+  width: 4rem;
+}
+
+.emoji_add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background-color: #242424;
+  border-radius: 10px;
+  height: 3.2rem;
+  width: 4rem;
+}
+
+.Emoji_tray {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  border-radius: 10px;
+}
+
 .input_bar > form > input {
   background-color: #242424;
   border-radius: 10px;
@@ -549,7 +586,7 @@
   object-fit: contain;
   max-width: 10rem; /* Limit maximum width */
   padding: 0.5rem; /* Add some padding for better spacing */
-  background: rgba(255, 255, 255, 0.7); /* Optional: Add a subtle background */
+  background: rgba(0, 0, 0, 0.7); /* Optional: Add a subtle background */
   backdrop-filter: blur(6px); /* Adjusted to px for clarity */
   border-radius: 8px; /* Optional: Add rounded corners for aesthetics */
   margin-bottom: 80px;
