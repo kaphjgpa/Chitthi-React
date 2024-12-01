@@ -12,7 +12,8 @@ import BlackLogo from "/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
 import data from "@emoji-mart/data";
-import Picker from "@emoji-mart/react";
+// import Picker from "@emoji-mart/react";
+import EmojiPicker from "emoji-picker-react";
 
 // After Update Firebase v9+
 import {
@@ -42,7 +43,7 @@ function Chitthi() {
   // This is for Group Chat
   const [active, setActive] = useState("");
   const { roomId } = useParams();
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(""); //
   const [roomName, setRoomName] = useState("");
   const [messages, setMessages] = useState([]);
   const [rooms, setRooms] = useState([]);
@@ -52,7 +53,15 @@ function Chitthi() {
 
   // This is for 1-1 Chat
   const { chatId } = useParams();
-  const [chatInput, setChatInput] = useState("");
+  const [chatInput, setChatInput] = useState(""); // take chatInput and Emoji and merj them
+  // Add Emojis in Chats and Groups
+  const [isVisible, setIsVisible] = useState(false);
+  // const [Emoji, setEmoji] = useState("");
+  const [text, setText] = useState("");
+
+  const toggleVisibility = () => {
+    setIsVisible((prev) => !prev); // Toggle visibility
+  };
   // Image with messages
   const imagePickerRef = useRef(null);
   const imagePickerRefG = useRef(null);
@@ -61,13 +70,7 @@ function Chitthi() {
 
   const [personMessages, setPersonMessages] = useState([]);
   const [personName, setPersonName] = useState("");
-  // Add Emojis in Chats and Groups
-  const [isVisible, setIsVisible] = useState(false);
-  const [Emoji, setEmoji] = useState("");
 
-  const toggleVisibility = () => {
-    setIsVisible((prev) => !prev); // Toggle visibility
-  };
   // Logic behind Image with text in 1-1
   const addImageToMessage = (e) => {
     const reader = new FileReader();
@@ -76,7 +79,14 @@ function Chitthi() {
     }
     reader.onload = (readerEvent) => {
       setImageToMessage(readerEvent.target.result);
+      setIsVisible(false);
     };
+  };
+
+  //Logic behind sending Text + Emoji
+  const textEmoji = (emojiObject) => {
+    setChatInput((chatInput) => chatInput + emojiObject.emoji);
+    setIsVisible(false);
   };
 
   // Remove the image from State for 1-1
@@ -713,9 +723,6 @@ function Chitthi() {
               ))}
               <div className="autoScroll" ref={autoScroll}></div>
             </div>
-            {/* {showEmojis ? (
-              <Emoji className="emoji_tray" onEmojiClick={onEmojiClick} />
-            ) : null} */}
             {imageToMessage && (
               <div className="send_Image_Container">
                 <CancelIcon
@@ -783,15 +790,6 @@ function Chitthi() {
                     </g>
                   </svg>
                 </button>
-                {isVisible && (
-                  <Picker
-                    className="Emoji_tray"
-                    data={data}
-                    onEmojiSelect={(d) => {
-                      setEmoji(d.native);
-                    }}
-                  />
-                )}
                 <input
                   ref={imagePickerRef}
                   onChange={addImageToMessage}
@@ -802,8 +800,7 @@ function Chitthi() {
               <div className="input_bar">
                 <form className="Form">
                   <input
-                    value={`${chatInput} ${Emoji}`}
-                    // value={chatInput}
+                    value={chatInput}
                     onChange={(e) => setChatInput(e.target.value)}
                     type="text"
                     placeholder="Type a message"
@@ -862,6 +859,16 @@ function Chitthi() {
               <h4>{user.displayName}</h4>
               <p>{user.email}</p>
             </div>
+          </div>
+          <div className="emoji_wrapper">
+            {isVisible && (
+              <EmojiPicker
+                className="emoji_tray"
+                pickerStyle={{ width: "10%" }}
+                onEmojiClick={textEmoji}
+                // theme={isDarkMode ? "dark" : "light"}
+              />
+            )}
           </div>
           {/* Only Chat Images */}
           {active === "Chats" && (

@@ -369,7 +369,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  margin-right: 5px;
   border: none;
   cursor: pointer;
   background-color: #242424;
@@ -390,9 +390,9 @@
   width: 4rem;
 }
 
-.Emoji_tray {
-  position: fixed;
-  top: 50%;
+.emoji_tray {
+  position: relative;
+  top: 51%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
@@ -406,8 +406,9 @@
   background-color: #242424;
   border-radius: 10px;
   height: 2rem;
-  width: 34rem;
-  font-size: 18px;
+  width: 27rem;
+  font-size: 16px;
+  font-weight: 300;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 10px;
