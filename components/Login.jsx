@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../components/css/Login.css";
 import { provider, auth } from "../src/firebase"; // Combined Firebase imports
 import { signInWithPopup } from "firebase/auth"; // Import from Firebase v9
-import Button from "@mui/material/Button";
 import WhiteLogo from "/WhiteLogo.png";
 import { Helmet } from "react-helmet"; // For managing document head
 
