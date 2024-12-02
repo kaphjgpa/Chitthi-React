@@ -612,9 +612,15 @@ function Chitthi({ users }) {
                     </div>
                   )}
                   <p className="message">{message.message}</p>
-                  <span className="chat_timestamp">
-                    {new Date(message.timestamp?.toDate()).toLocaleString()}
-                  </span>
+                  <div className="information">
+                    <div className="group_user_name_img">
+                      <img src={message.photoURL} alt="user_image" />
+                      <p>{message.name}</p>
+                    </div>
+                    <span className="chat_timestamp">
+                      {new Date(message.timestamp?.toDate()).toLocaleString()}
+                    </span>
+                  </div>
                 </div>
               ))}
               <div className="autoScroll" ref={autoScroll}></div>

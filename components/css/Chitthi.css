@@ -359,6 +359,36 @@
   margin-top: 10px;
 }
 
+.information {
+  background-color: #242424;
+  border-radius: 10px;
+  width: 150px;
+}
+
+.message {
+  margin-left: 5px;
+}
+
+.group_user_name_img {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.group_user_name_img > img {
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.group_user_name_img > p {
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 5px;
+}
+
 .chat_reciever {
   margin-left: auto;
   max-width: 25rem;
