@@ -753,9 +753,10 @@ function Chitthi({ users }) {
                       <img src={message.sendImage} alt="Image" />
                     </div>
                   )}
-
-                  <Avatar className="msg_avatar" src={message.photoURL} />
-                  <p>{message.message}</p>
+                  <div className="avatar_msg">
+                    <img className="msg_avatar" src={message.photoURL} />
+                    <p>{message.message}</p>
+                  </div>
                   {/* <p>{message.name}</p> */}
                   <span className="chat_timestamp">
                     {new Date(message.timestamp?.toDate()).toLocaleString()}

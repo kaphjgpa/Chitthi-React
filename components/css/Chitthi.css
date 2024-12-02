@@ -318,6 +318,8 @@
 }
 
 .chat_message {
+  display: flex;
+  flex-direction: column;
   position: relative;
   font-size: 16px;
   padding: 5px;
@@ -330,15 +332,36 @@
   width: fit-content;
 }
 
-.chat_message > p {
+.msg_avatar {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  font-size: 1.25rem;
+  align-items: center;
+  flex-shrink: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1;
+  user-select: none;
+  border-radius: 50%;
+  justify-content: center;
+}
+
+.avatar_msg > p {
   font-size: 16px;
   font-weight: 200;
   margin-left: 5px;
 }
 
+.avatar_msg {
+  display: flex;
+  margin-top: 10px;
+}
+
 .chat_reciever {
   margin-left: auto;
-  max-width: 30rem;
+  max-width: 25rem;
   align-items: flex-start;
   word-break: break-word;
   background-color: #34c85a;
@@ -351,6 +374,7 @@
 
 .chat_timestamp {
   margin-left: 5px;
+  margin-top: 10px;
   font-size: 10px;
 }
 
@@ -615,13 +639,11 @@
   display: flex;
   width: 25rem;
   object-fit: contain;
-  flex-direction: column;
-  justify-items: flex-end;
-  align-items: flex-start;
 }
 
 .send_Image > img {
   object-fit: cover;
+  justify-content: end;
   height: 100%;
   width: 100%;
 }
