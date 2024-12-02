@@ -34,10 +34,9 @@ import {
   uploadString,
   getDownloadURL,
 } from "firebase/storage";
-import { getAuth } from "firebase/auth";
-// import { firebaseConfig } from "./firebaseConfig";
+import getRecipientEmail from "../components/utils/getRecipientEmail";
 
-function Chitthi() {
+function Chitthi({ users }) {
   const [user] = useAuthState(auth);
   // This is for Group Chat
   const [active, setActive] = useState("");
@@ -81,6 +80,32 @@ function Chitthi() {
       setIsVisible(false);
     };
   };
+  // Login behind adding recipients near lastseen
+  const recipientEmail = getRecipientEmail(users, user);
+
+  useEffect(() => {
+    const fetchRecipient = async () => {
+      try {
+        setLoading(true);
+        if (recipientEmail) {
+          const q = query(
+            collection(db, "users"),
+            where("email", "==", recipientEmail)
+          );
+          const snapshot = await getDocs(q);
+          if (!snapshot.empty) {
+            setRecipient(snapshot.docs[0].data());
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching recipient data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRecipient();
+  }, [recipientEmail]);
 
   //Logic behind sending Text + Emoji
   const textEmoji = (emojiObject) => {
@@ -694,6 +719,8 @@ function Chitthi() {
             <div className="chitthi_wrapper_center_top">
               <div className="chitthi_wrapper_center_top_left">
                 <div className="recipient_info">
+                  {/* <Avatar>{recipientEmail[1]}</Avatar> */}
+                  {/* <Avatar src={recipient?.photoURL} /> */}
                   <p className="lastSeen">
                     Last seen{" "}
                     {new Date(
@@ -718,6 +745,7 @@ function Chitthi() {
                     </div>
                   )}
                   <p>{message.message}</p>
+                  {/* <Avatar src={user.photoURL}></Avatar> */}
                   <span className="chat_timestamp">
                     {new Date(message.timestamp?.toDate()).toLocaleString()}
                   </span>

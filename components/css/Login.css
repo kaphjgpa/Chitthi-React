@@ -26,11 +26,31 @@
   z-index: 4;
 }
 
-.image_container > img {
-  height: 100%;
-  width: 100%;
-  /* margin-left: 10rem; */
-  z-index: 5;
+.app_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  background: #303030;
+  color: #ffffff;
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 7px;
+  height: 3rem;
+  width: 11rem;
+}
+
+.login_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.google {
+  margin-right: 10px;
 }
 
 .login_container {
@@ -40,6 +60,8 @@
   border: 1px solid #000;
   height: 500px;
   width: 400px;
+  justify-content: center;
+  align-items: center;
   /* backdrop-filter: blur(6rem); */
   box-shadow: 0 10px 16px 0px rgba(0, 0, 0, 0.12);
   z-index: 5;

@@ -13,6 +13,10 @@
   background-color: #303030;
 }
 
+.chatTwo_Wrapper.selected {
+  background-color: #d1e7ff; /* Highlight color for the selected user */
+}
+
 .avatar {
   margin-right: 8px;
 }
