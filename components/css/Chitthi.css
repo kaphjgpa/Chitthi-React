@@ -338,25 +338,42 @@
   display: flex;
   overflow: hidden;
   position: relative;
-  font-size: 1.25rem;
   align-items: center;
   flex-shrink: 0;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  line-height: 1;
+  margin-right: 5px;
+  margin-left: 5px;
   user-select: none;
   border-radius: 50%;
   justify-content: center;
 }
 
-.avatar_msg > p {
+.chat_user_name {
+  font-size: 12px;
+  font-weight: 100;
+  margin-top: 5px;
+}
+
+/* .chat_message {
   font-size: 16px;
   font-weight: 200;
   margin-left: 5px;
+} */
+
+.chat_user_name_img {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
 }
 
 .avatar_msg {
   display: flex;
   margin-top: 10px;
+}
+
+.chat_information {
+  background-color: #242424;
+  border-radius: 10px;
+  width: 150px;
 }
 
 .information {
