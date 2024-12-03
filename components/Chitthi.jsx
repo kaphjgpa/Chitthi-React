@@ -124,13 +124,32 @@ function Chitthi({ users }) {
     }
   }, [chatId]);
 
-  const createChat = () => {
+  ////////////////////////////////////////////////////////////////////////
+
+  const createChat = async () => {
     const input = prompt(
       "Please enter an email address for the user you wish to chat with"
-    );
-    if (!input) return null; // If input field is empty do nothing
+    )?.trim();
 
-    // if (input === recipientEmail) return null; // donot allow to chat with the same person twice
+    if (!input) {
+      alert("Invalid input!");
+      return null;
+    }
+
+    if (input === user.email) {
+      alert("You cannot chat with yourself!");
+      return null;
+    }
+
+    if (!EmailValidator.validate(input)) {
+      alert("Please enter a valid email address!");
+      return null;
+    }
+
+    if (chatAlreadyExists(input)) {
+      alert("Chat already exists!");
+      return null;
+    }
 
     if (
       EmailValidator.validate(input) && //donot let user to chat with themselves
@@ -146,15 +165,13 @@ function Chitthi({ users }) {
 
   const userChatRef = query(
     collection(db, "chats"),
-    where("users", "array-contains", user.email || null)
+    where("users", "array-contains", user.email)
   );
   const [chatsSnapshot] = useCollection(userChatRef);
 
   const chatAlreadyExists = (recipientEmail) =>
-    !!chatsSnapshot?.docs.find(
-      (chat) =>
-        chat.data().users.find((user) => user.email === recipientEmail)
-          ?.length > 0
+    !!chatsSnapshot?.docs.find((chat) =>
+      chat.data().users.includes(recipientEmail)
     );
 
   const SendMessageToChat = async (e) => {
