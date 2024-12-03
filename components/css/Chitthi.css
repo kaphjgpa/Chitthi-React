@@ -462,18 +462,9 @@
   width: 4rem;
 }
 
-.emoji_tray {
-  position: relative;
-  top: 51%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  border-radius: 10px;
+.emoji_wrapper {
+  justify-items: center;
 }
-
 .input_bar > form > input {
   background-color: #242424;
   border-radius: 10px;

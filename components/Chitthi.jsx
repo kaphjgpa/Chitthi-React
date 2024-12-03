@@ -12,7 +12,7 @@ import BlackLogo from "/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
 import { Helmet } from "react-helmet"; // For managing document head
-import EmojiPicker from "emoji-picker-react";
+import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 // After Update Firebase v9+
 import {
@@ -914,8 +914,11 @@ function Chitthi({ users }) {
             {isVisible && (
               <EmojiPicker
                 className="emoji_tray"
-                pickerStyle={{ width: "10%" }}
+                pickerStyle={{ width: "100%" }}
                 onEmojiClick={textEmoji}
+                theme="dark"
+                skinTonesDisabled={true}
+                emojiStyle={EmojiStyle.APPLE} // Change this to NATIVE, GOOGLE, etc.
                 // theme={isDarkMode ? "dark" : "light"}
               />
             )}
