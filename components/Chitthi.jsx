@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../src/firebase";
 import * as EmailValidator from "email-validator";
 import "../components/css/Chitthi.css";
-import { Avatar, IconButton } from "@material-ui/core";
-// import Avatar from "@mui/material/Avatar";
+import { Avatar } from "@material-ui/core";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CancelIcon from "@mui/icons-material/Cancel";
 import BlackLogo from "/BlackLogo.png";
@@ -16,7 +15,6 @@ import EmojiPicker, { EmojiStyle } from "emoji-picker-react";
 
 // After Update Firebase v9+
 import {
-  getFirestore,
   collection,
   doc,
   setDoc,
@@ -28,13 +26,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
-import {
-  getStorage,
-  ref,
-  uploadString,
-  getDownloadURL,
-} from "firebase/storage";
-import getRecipientEmail from "../components/utils/getRecipientEmail";
+import { ref, uploadString, getDownloadURL } from "firebase/storage";
 
 function Chitthi({ users }) {
   const [user] = useAuthState(auth);
