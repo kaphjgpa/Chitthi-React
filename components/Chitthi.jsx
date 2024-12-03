@@ -128,10 +128,12 @@ function Chitthi({ users }) {
     const input = prompt(
       "Please enter an email address for the user you wish to chat with"
     );
-    if (!input) return null;
+    if (!input) return null; // If input field is empty do nothing
+
+    if (input === recipientEmail) return null; // donot allow to chat with the same person twice
 
     if (
-      EmailValidator.validate(input) &&
+      EmailValidator.validate(input) && //donot let user to chat with themselves
       !chatAlreadyExists(input) &&
       input !== user.email
     ) {
