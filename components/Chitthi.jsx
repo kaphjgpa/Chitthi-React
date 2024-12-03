@@ -130,7 +130,7 @@ function Chitthi({ users }) {
     );
     if (!input) return null; // If input field is empty do nothing
 
-    if (input === recipientEmail) return null; // donot allow to chat with the same person twice
+    // if (input === recipientEmail) return null; // donot allow to chat with the same person twice
 
     if (
       EmailValidator.validate(input) && //donot let user to chat with themselves
