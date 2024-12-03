@@ -333,14 +333,13 @@ function Chitthi({ users }) {
             <img className="chitthi_logo" src={BlackLogo} alt="logo" />
           </div>
           <div className="chitthi_center">
-            <div className="Chats">
+            <button onClick={() => setActive("Chats")} className="Chats">
               <svg
                 width="24px"
                 height="24px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                onClick={() => setActive("Chats")}
               >
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g
@@ -374,16 +373,14 @@ function Chitthi({ users }) {
                 </g>
               </svg>
               <h5>Chats</h5>
-            </div>
-            <br />
-            <div className="Rooms">
+            </button>
+            <button onClick={() => setActive("Groups")} className="Rooms">
               <svg
                 width="24px"
                 height="24px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                onClick={() => setActive("Groups")}
               >
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g
@@ -403,17 +400,16 @@ function Chitthi({ users }) {
                 </g>
               </svg>
               <h5>Rooms</h5>
-            </div>
+            </button>
           </div>
           <div className="chitthi_buttom">
-            <div className="Create_room">
+            <button onClick={createRoom} className="Create_room">
               <svg
-                width="24px"
-                height="24px"
+                width="30px"
+                height="30px"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                onClick={createRoom}
               >
                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                 <g
@@ -462,12 +458,36 @@ function Chitthi({ users }) {
               </svg>
               <h5>Create</h5>
               <h5>Room</h5>
-            </div>
-            <Avatar
-              className="avatar"
-              src={user.photoURL}
-              onClick={() => auth.signOut()}
-            />
+            </button>
+            <button className="logout_btn" onClick={() => auth.signOut()}>
+              <svg
+                width="24px"
+                height="24px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  {" "}
+                  <path
+                    d="M16.8 2H14.2C11 2 9 4 9 7.2V11.25H15.25C15.66 11.25 16 11.59 16 12C16 12.41 15.66 12.75 15.25 12.75H9V16.8C9 20 11 22 14.2 22H16.79C19.99 22 21.99 20 21.99 16.8V7.2C22 4 20 2 16.8 2Z"
+                    fill="#ffffff"
+                  ></path>{" "}
+                  <path
+                    d="M4.56141 11.2498L6.63141 9.17984C6.78141 9.02984 6.85141 8.83984 6.85141 8.64984C6.85141 8.45984 6.78141 8.25984 6.63141 8.11984C6.34141 7.82984 5.86141 7.82984 5.57141 8.11984L2.22141 11.4698C1.93141 11.7598 1.93141 12.2398 2.22141 12.5298L5.57141 15.8798C5.86141 16.1698 6.34141 16.1698 6.63141 15.8798C6.92141 15.5898 6.92141 15.1098 6.63141 14.8198L4.56141 12.7498H9.00141V11.2498H4.56141Z"
+                    fill="#ffffff"
+                  ></path>{" "}
+                </g>
+              </svg>
+              <h6>Logout</h6>
+            </button>
+            <Avatar className="avatar" src={user.photoURL} />
           </div>
         </div>
         <div className="chitthi_wrapper_left">
@@ -701,7 +721,7 @@ function Chitthi({ users }) {
                     type="submit"
                   >
                     <svg
-                      fill="#000000"
+                      fill="#ffffff"
                       height="22px"
                       width="22px"
                       version="1.1"
@@ -871,7 +891,7 @@ function Chitthi({ users }) {
                     type="submit"
                   >
                     <svg
-                      fill="#000000"
+                      fill="#ffffff"
                       height="22px"
                       width="22px"
                       version="1.1"

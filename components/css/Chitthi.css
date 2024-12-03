@@ -16,10 +16,9 @@
 } */
 
 .avatar {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 5px;
-  cursor: pointer;
 }
 
 .chitthi_body {
@@ -71,13 +70,19 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  height: 60px;
+  width: 60px;
   margin-bottom: 10px;
 }
 
 .Chats > h5 {
-  font-size: 12px;
-  font-weight: 200;
+  font-size: 11px;
+  font-weight: 100;
   padding-top: 5px;
+}
+
+.Chats:hover {
+  background-color: #34c85a;
 }
 
 .Rooms {
@@ -87,12 +92,18 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  height: 60px;
+  width: 60px;
 }
 
 .Rooms > h5 {
-  font-size: 12px;
-  font-weight: 200;
+  font-size: 11px;
+  font-weight: 100;
   padding-top: 5px;
+}
+
+.Rooms:hover {
+  background-color: #34c85a;
 }
 
 .chitthi_buttom {
@@ -102,19 +113,45 @@
   flex-direction: column;
 }
 
+.logout_btn {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  background-color: #303030;
+  align-items: center;
+  border-radius: 10px;
+  padding-right: 20px;
+  height: 60px;
+  width: 60px;
+  border-color: #000000;
+  margin-top: 10px;
+}
+
+.logout_btn > h6 {
+  margin-top: 5px;
+  font-size: 11px;
+  font-weight: 100;
+}
+
+.logout_btn:hover {
+  background-color: #ff2929;
+}
+
 .Create_room {
   display: flex;
   flex-direction: column;
   cursor: pointer;
   background-color: #303030;
   align-items: center;
-  border-radius: 15px;
-  border-color: #000000;
+  border-radius: 10px;
+  height: 60px;
+  width: 60px;
+  margin-right: 5px;
 }
 
 .Create_room > h5 {
-  font-size: 12px;
-  font-weight: 200;
+  font-size: 11px;
+  font-weight: 100;
 }
 
 .chitthi_buttom > .MuiSvgIcon-root {
@@ -477,6 +514,7 @@
   padding: 10px;
   border: none;
   outline-width: 0;
+  overflow-y: scroll;
 }
 
 .Send_button {
