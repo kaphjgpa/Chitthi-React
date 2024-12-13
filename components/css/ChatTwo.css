@@ -10,11 +10,12 @@
 }
 
 .chatTwo_Wrapper:hover {
-  background-color: #303030;
+  background-color: #242424;
 }
 
 .chatTwo_Wrapper.selected {
-  background-color: #d1e7ff; /* Highlight color for the selected user */
+  background-color: #d1e7ff;
+  /* Highlight color for the selected user */
 }
 
 .avatar {
@@ -25,7 +26,8 @@
   color: black;
   margin-left: 15px;
 }
-.recipient_info > h2 {
+
+.recipient_info>h2 {
   font-size: 16px;
   margin-bottom: 8px;
   font-weight: 300;
