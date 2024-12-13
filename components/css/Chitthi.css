@@ -292,35 +292,56 @@
   font-weight: 100;
 }
 
+/* Styling for the footer container */
 .chitthi_chat_footer {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  background-color: #303030;
+  border-top: 1px solid #23272a;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
-  flex-direction: row;
-  background-color: #303030;
-  margin-bottom: 10px;
-  flex: 0.05;
+  width: 50%;
+  height: 40px;
+  z-index: 1000;
   border-radius: 10px;
-  width: 70%;
 }
 
+/* Styling for the document and emoji button section */
 .add_docs {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 5px;
-  flex: 0.1;
+  gap: 10px;
 }
 
-.input_bar {
+.image_add,
+.emoji_add {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   display: flex;
-  flex: 0.8;
-}
-
-.emoji_send {
   align-items: center;
   justify-content: center;
   padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+.image_add:hover,
+.emoji_add:hover {
+  transform: scale(1.1);
+}
+
+.image_add svg,
+.emoji_add svg {
+  fill: #ffffff;
+}
+
+/* Styling for the hidden input */
+.add_docs input[type="file"] {
+  display: none;
 }
 
 /* Header */
@@ -392,11 +413,6 @@
   margin-top: 5px;
 }
 
-/* .chat_message {
-  font-size: 16px;
-  font-weight: 200;
-  margin-left: 5px;
-} */
 
 .chat_user_name_img {
   display: flex;
@@ -464,79 +480,59 @@
   font-size: 10px;
 }
 
+/* Styling for the input bar */
+.input_bar {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
 .Form {
   display: flex;
-  /* position: fixed; */
-  /* bottom: 0; */
-  /* left: 0; */
-  /* width: 100%; */
+  width: 100%;
 }
 
-.input_bar>form>button {
-  display: flex;
-}
-
-.image_add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 5px;
-  border: none;
-  cursor: pointer;
-  background-color: #242424;
-  border-radius: 10px;
-  height: 3.2rem;
-  width: 4rem;
-}
-
-.emoji_add {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-  background-color: #242424;
-  border-radius: 10px;
-  height: 3.2rem;
-  width: 4rem;
-}
-
-.emoji_wrapper {
-  justify-items: center;
-}
-
-.input_bar>form>input {
-  background-color: #242424;
-  border-radius: 10px;
-  height: 2rem;
-  width: 27rem;
-  font-size: 16px;
-  font-weight: 300;
-  margin-top: 10px;
-  margin-bottom: 10px;
+.Form input {
+  flex-grow: 1;
   padding: 10px;
   border: none;
-  outline-width: 0;
-  overflow-y: scroll;
+  border-radius: 20px;
+  outline: none;
+  background-color: #40444b;
+  color: #ffffff;
+  font-size: 14px;
 }
 
+.Form input::placeholder {
+  color: #b9bbbe;
+}
+
+/* Styling for the send button */
 .Send_button {
+  background-color: #242424;
+  border: none;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
-  margin-left: 5px;
-  margin-right: 10px;
-  border: none;
+  margin-left: 10px;
+  padding: 10px;
   cursor: pointer;
-  background-color: #242424;
-  color: #ffffff;
-  font-family: "Rubik", sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  border-radius: 10px;
-  height: 3.2rem;
-  width: 4rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.Send_button:disabled {
+  background-color: #5865f2;
+  cursor: not-allowed;
+}
+
+.Send_button:hover:not(:disabled) {
+  background-color: #5b6eae;
+  transform: scale(1.1);
+}
+
+.Send_button svg {
+  fill: #ffffff;
 }
 
 /* CHITTHI RIGHT SECTION */
