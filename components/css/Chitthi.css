@@ -75,7 +75,7 @@
   margin-bottom: 10px;
 }
 
-.Chats > h5 {
+.Chats>h5 {
   font-size: 11px;
   font-weight: 100;
   padding-top: 5px;
@@ -96,7 +96,7 @@
   width: 60px;
 }
 
-.Rooms > h5 {
+.Rooms>h5 {
   font-size: 11px;
   font-weight: 100;
   padding-top: 5px;
@@ -127,7 +127,7 @@
   margin-top: 10px;
 }
 
-.logout_btn > h6 {
+.logout_btn>h6 {
   margin-top: 5px;
   font-size: 11px;
   font-weight: 100;
@@ -149,17 +149,17 @@
   margin-right: 5px;
 }
 
-.Create_room > h5 {
+.Create_room>h5 {
   font-size: 11px;
   font-weight: 100;
 }
 
-.chitthi_buttom > .MuiSvgIcon-root {
+.chitthi_buttom>.MuiSvgIcon-root {
   padding: 15px;
   color: #bfbfc1;
 }
 
-.chitthi_center > .MuiSvgIcon-root {
+.chitthi_center>.MuiSvgIcon-root {
   padding: 15px;
   color: #bfbfc1;
 }
@@ -184,7 +184,7 @@
   margin-left: 10px;
 }
 
-.add_conversation > button {
+.add_conversation>button {
   border: none;
   background: black;
   cursor: pointer;
@@ -204,7 +204,7 @@
   justify-content: center;
 }
 
-.conversation_btn > h5 {
+.conversation_btn>h5 {
   font-size: 20px;
   font-weight: 300;
 }
@@ -216,7 +216,7 @@
   align-items: center;
 }
 
-.text_chat > h1 {
+.text_chat>h1 {
   color: #bfbfc1;
   font-size: 25px;
   font-weight: 300;
@@ -233,7 +233,7 @@
   background-color: #303030;
 }
 
-.search_bar > input {
+.search_bar>input {
   background-color: #242424;
   color: rgb(255, 255, 255);
   flex: 1;
@@ -272,17 +272,17 @@
   flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  min-width: 23rem;
+  width: 60%;
 }
 
 .chat_screen {
   padding-top: 10px;
   padding-bottom: 1rem;
   overflow-y: scroll;
-  width: 42rem;
+  width: 100%;
 }
 
-.chat_screen > p {
+.chat_screen>p {
   font-size: 16px;
   font-weight: 100;
 }
@@ -301,6 +301,7 @@
   margin-bottom: 10px;
   flex: 0.05;
   border-radius: 10px;
+  width: 70%;
 }
 
 .add_docs {
@@ -332,6 +333,7 @@
   border-radius: 10px;
   width: 95%;
 }
+
 .chitthi_wrapper_center_top_group {
   display: flex;
   align-items: start;
@@ -430,14 +432,14 @@
   margin-left: 5px;
 }
 
-.group_user_name_img > img {
+.group_user_name_img>img {
   height: 25px;
   width: 25px;
   margin-right: 5px;
   border-radius: 50%;
 }
 
-.group_user_name_img > p {
+.group_user_name_img>p {
   font-size: 12px;
   font-weight: 100;
   margin-top: 5px;
@@ -451,7 +453,7 @@
   background-color: #34c85a;
 }
 
-.chat_reciever > p {
+.chat_reciever>p {
   font-size: 16px;
   font-weight: 200;
 }
@@ -470,7 +472,7 @@
   /* width: 100%; */
 }
 
-.input_bar > form > button {
+.input_bar>form>button {
   display: flex;
 }
 
@@ -502,7 +504,8 @@
 .emoji_wrapper {
   justify-items: center;
 }
-.input_bar > form > input {
+
+.input_bar>form>input {
   background-color: #242424;
   border-radius: 10px;
   height: 2rem;
@@ -543,7 +546,7 @@
   display: flex;
   flex-direction: column;
   color: black;
-  width: 29%;
+  width: 20%;
   border-radius: 0 10px 10px 0;
 }
 
@@ -575,13 +578,13 @@
   border-radius: 10px;
 }
 
-.info > h4 {
+.info>h4 {
   color: #ffffff;
   font-size: 18px;
   font-weight: 200;
 }
 
-.info > p {
+.info>p {
   color: #ffffff;
   font-size: 16px;
   font-weight: 100;
@@ -616,7 +619,7 @@
   width: 100%;
 }
 
-.sub_heading_container > h3 {
+.sub_heading_container>h3 {
   color: #ffffff;
   font-weight: 200;
   margin-right: 10px;
@@ -683,25 +686,33 @@
 }
 
 .send_Image_Container {
-  display: inline-flex; /* Use inline-flex to size based on content */
+  display: inline-flex;
+  /* Use inline-flex to size based on content */
   flex-direction: column;
-  align-items: center; /* Center the content horizontally */
+  align-items: center;
+  /* Center the content horizontally */
   object-fit: contain;
-  max-width: 10rem; /* Limit maximum width */
-  padding: 0.5rem; /* Add some padding for better spacing */
-  background: rgba(0, 0, 0, 0.7); /* Optional: Add a subtle background */
-  backdrop-filter: blur(6px); /* Adjusted to px for clarity */
-  border-radius: 8px; /* Optional: Add rounded corners for aesthetics */
+  max-width: 10rem;
+  /* Limit maximum width */
+  padding: 0.5rem;
+  /* Add some padding for better spacing */
+  background: rgba(0, 0, 0, 0.7);
+  /* Optional: Add a subtle background */
+  backdrop-filter: blur(6px);
+  /* Adjusted to px for clarity */
+  border-radius: 8px;
+  /* Optional: Add rounded corners for aesthetics */
   margin-bottom: 80px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Optional: Add a subtle shadow */
 }
 
-.send_Image_Container > h3 {
+.send_Image_Container>h3 {
   padding-right: 15rem;
   padding-top: 0.7rem;
 }
 
-.send_Image_Container > img {
+.send_Image_Container>img {
   height: 100%;
   width: 100%;
   object-fit: contain;
@@ -717,7 +728,7 @@
   object-fit: contain;
 }
 
-.send_Image > img {
+.send_Image>img {
   object-fit: cover;
   justify-content: end;
   height: 100%;
@@ -730,7 +741,7 @@
   flex-direction: row;
 }
 
-.user_file_heading > h3 {
+.user_file_heading>h3 {
   padding-right: 15.5rem;
   padding-top: 0.7rem;
 }
