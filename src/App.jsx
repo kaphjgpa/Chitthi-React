@@ -15,11 +15,11 @@ function App() {
           <Home />
         </>
       ),
-      errorElement: <ErrorPage />, // This handles errors for the root path
+      errorElement: <ErrorPage />,
     },
     {
       path: "/mainapp",
-      element: <MainApp />, // No Fragment needed
+      element: <MainApp />,
     },
     {
       path: "/mainapp/chat/:chatId",
