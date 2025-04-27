@@ -167,57 +167,48 @@ function Chitthi({ users }) {
     );
 
   const SendMessageToChat = async (e) => {
-    e.preventDefault(); // Prevent page refresh
+    e.preventDefault();
 
     try {
-      // Update last seen for the user
+      // 1) Update lastSeen
       await setDoc(
         doc(db, "users", user.uid),
         { lastSeen: serverTimestamp() },
         { merge: true }
       );
 
-      // Add a new message to the chat
-      const messageRef = await addDoc(
-        collection(db, "chats", chatId, "messages"),
-        {
-          timestamp: serverTimestamp(),
-          message: chatInput,
-          name: user.displayName,
-          user: user.email,
-          photoURL: user.photoURL,
-        }
-      );
-
-      // If there's an image to upload
+      // 2) If there's an image, upload and get URL BEFORE sending message
+      let imageURL = null;
       if (imageToMessage) {
-        const imageRef = ref(storage, `images/${messageRef.id}`);
-        const uploadTask = uploadString(imageRef, imageToMessage, "data_url");
-
-        uploadTask
-          .then(async () => {
-            const url = await getDownloadURL(imageRef);
-
-            // Update the message with the image URL
-            await setDoc(
-              doc(db, "chats", chatId, "messages", messageRef.id),
-              { sendImage: url },
-              { merge: true }
-            );
-          })
-          .catch((error) => {
-            console.error("Image upload failed: ", error);
-          });
-
+        const imageRef = ref(storage, `images/${Date.now()}-${user.uid}`);
+        await uploadString(imageRef, imageToMessage, "data_url");
+        imageURL = await getDownloadURL(imageRef);
         removeImage();
       }
-    } catch (error) {
-      console.error("Error sending message: ", error);
-    }
 
-    setChatInput("");
-    autoScroll.current.scrollIntoView({ behavior: "smooth" });
+      // 3) Build your payload object dynamically
+      const payload = {
+        timestamp: serverTimestamp(),
+        name: user.displayName,
+        user: user.email,
+        photoURL: user.photoURL,
+        // include text if non-empty
+        ...(chatInput.trim() && { message: chatInput.trim() }),
+        // include image URL if there was an upload
+        ...(imageURL && { sendImage: imageURL }),
+      };
+
+      // 4) Send it in one go
+      await addDoc(collection(db, "chats", chatId, "messages"), payload);
+
+      // 5) Reset input & scroll
+      setChatInput("");
+      autoScroll.current.scrollIntoView({ behavior: "smooth" });
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
+
   //room functionality
   //THIS FUNCTION MOUNT THE ALL ROOMS THAT ARE IN OUR DATABASE
 
