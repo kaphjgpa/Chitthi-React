@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/css/Home.css";
-import BlackLogo from "/BlackLogo.png";
+import BlackLogo from "../src/assets/images/BlackLogo.png";
 
 function Home() {
   return (

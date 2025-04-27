@@ -1,6 +1,6 @@
 import React from "react";
 import "../components/css/Navbar.css";
-import WhiteLogo from "/WhiteLogo.png";
+import WhiteLogo from "../src/assets/images/WhiteLogo.png"; // Corrected import path
 import { Link } from "react-router-dom";
 
 function Navbar() {

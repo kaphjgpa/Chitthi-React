@@ -7,7 +7,7 @@ import "../components/css/Chitthi.css";
 import { Avatar } from "@material-ui/core";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import CancelIcon from "@mui/icons-material/Cancel";
-import BlackLogo from "/BlackLogo.png";
+import BlackLogo from "../src/assets/images/BlackLogo.png";
 import ChatTwo from "./ChatTwo";
 import SidebarChat from "./SidebarChat";
 import { Helmet } from "react-helmet"; // For managing document head

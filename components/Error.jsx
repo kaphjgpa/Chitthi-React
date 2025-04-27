@@ -2,8 +2,8 @@ import React from "react";
 import { Link, useRouteError } from "react-router-dom"; // Correctly import hooks and Link
 import "../components/css/Error.css";
 
-import BlackLogo from "../public/BlackLogo.png";
-import WhiteLogo from "../public/WhiteLogo.png";
+import BlackLogo from "../src/assets/images/BlackLogo.png";
+import WhiteLogo from "../src/assets/images/WhiteLogo.png";
 
 const ErrorPage = () => {
   const error = useRouteError();

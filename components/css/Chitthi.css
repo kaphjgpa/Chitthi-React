@@ -69,6 +69,8 @@
   flex-direction: column;
   cursor: pointer;
   align-items: center;
+  background-color: #303030;
+  border-radius: 10px;
   justify-content: center;
   height: 60px;
   width: 60px;
@@ -76,9 +78,15 @@
 }
 
 .Chats>h5 {
+  color: #ffffff;
   font-size: 11px;
   font-weight: 100;
   padding-top: 5px;
+}
+
+.Chats>h5:hover {
+  color: #000000;
+  background-color: #34c85a;
 }
 
 .Chats:hover {
@@ -91,6 +99,8 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
+  background-color: #303030;
+  border-radius: 10px;
   margin-bottom: 10px;
   height: 60px;
   width: 60px;
@@ -98,12 +108,14 @@
 
 .Rooms>h5 {
   font-size: 11px;
+  color: #ffffff;
   font-weight: 100;
   padding-top: 5px;
 }
 
 .Rooms:hover {
   background-color: #34c85a;
+  color: #000000;
 }
 
 .chitthi_buttom {
@@ -115,6 +127,7 @@
 
 .logout_btn {
   display: flex;
+  color: #ffffff;
   flex-direction: column;
   cursor: pointer;
   background-color: #303030;
@@ -139,6 +152,7 @@
 
 .Create_room {
   display: flex;
+  color: #ffffff;
   flex-direction: column;
   cursor: pointer;
   background-color: #303030;
@@ -147,6 +161,11 @@
   height: 60px;
   width: 60px;
   margin-right: 5px;
+}
+
+.Create_room:hover {
+  background-color: #2949d5;
+  color: #000000;
 }
 
 .Create_room>h5 {

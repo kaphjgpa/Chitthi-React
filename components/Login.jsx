@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../components/css/Login.css";
 import { provider, auth } from "../src/firebase"; // Combined Firebase imports
 import { signInWithPopup } from "firebase/auth"; // Import from Firebase v9
-import WhiteLogo from "/WhiteLogo.png";
+import WhiteLogo from "../src/assets/images/WhiteLogo.png"; // Corrected import path
 import { Helmet } from "react-helmet"; // For managing document head
 
 function Login() {

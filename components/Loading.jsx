@@ -1,5 +1,5 @@
 import React from "react";
-import BlackLogo from "/BlackLogo.png";
+import BlackLogo from "../src/assets/images/BlackLogo.png";
 import "./css/Loading.css";
 import loading from "/unnamed.gif";
 
